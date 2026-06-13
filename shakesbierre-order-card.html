@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonight's Order — ShakesBierre SkyDeck, Brigade Road</title>
+<style>
+  :root {
+    --ivory: #faf6ee;
+    --cream: #fffdf7;
+    --green: #1e3d2f;
+    --green-lt: #2e5c46;
+    --gold: #b8923e;
+    --gold-lt: #d4aa5f;
+    --charcoal: #2b2b26;
+    --muted: #6b675c;
+    --amber: #8a5a00;
+    --amber-lt: #fdf3e0;
+    --rain-bg: #e8f0f8;
+    --rain-border: #7fa8c9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .card {
+    max-width: 760px;
+    margin: 24px auto;
+    background: var(--cream);
+    border: 1px solid #e5ddc9;
+    border-top: 5px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30,61,47,0.10);
+  }
+
+  /* ── Header ── */
+  .head {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 26px 30px 22px;
+    text-align: center;
+  }
+  .head .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 6px;
+  }
+  .head h1 {
+    font-size: 1.65rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+  }
+  .head .sub {
+    font-size: 0.84rem;
+    color: #cfe0d5;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .meta-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,170,95,0.5);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.78rem;
+    color: var(--ivory);
+  }
+
+  .body { padding: 24px 30px 28px; }
+
+  .sec-title {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid #e5ddc9;
+    padding-bottom: 6px;
+    margin: 22px 0 14px;
+  }
+  .sec-title:first-child { margin-top: 0; }
+
+  /* ── Confidence tags ── */
+  .tag-confirmed {
+    display: inline-block;
+    background: var(--green);
+    color: var(--ivory);
+    font-size: 0.63rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+  .tag-limited {
+    display: inline-block;
+    background: var(--amber);
+    color: #fff;
+    font-size: 0.63rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+  .tag-current {
+    display: inline-block;
+    background: var(--green-lt);
+    color: var(--ivory);
+    font-size: 0.63rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+
+  /* ── Beer section ── */
+  .beer-hero {
+    background: var(--ivory);
+    border: 1px solid #e8e0cc;
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .beer-hero h3 {
+    font-size: 0.98rem;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .beer-hero .hero-why {
+    font-size: 0.83rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .beer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .beer-item {
+    background: var(--cream);
+    border: 1px solid #e8e0cc;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .beer-name {
+    font-weight: 700;
+    color: var(--green-lt);
+    font-size: 0.90rem;
+  }
+  .beer-abv {
+    font-size: 0.76rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .beer-style {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .beer-score {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 3px;
+    font-style: italic;
+  }
+  .cocktail-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    padding: 10px 12px;
+    border: 1px dashed #d0c9b3;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  .happyhour {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--green-lt);
+    margin-top: 8px;
+  }
+
+  /* ── Course rows ── */
+  .course-row {
+    padding: 12px 0;
+    border-bottom: 1px dashed #e0d8c2;
+  }
+  .course-row:last-child { border-bottom: none; }
+  .course-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+  .course-label {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .dish-name { font-weight: 700; color: var(--green); font-size: 0.97rem; }
+  .dish-price { color: var(--gold); font-weight: 700; white-space: nowrap; font-size: 0.95rem; }
+  .dish-why { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+  .dish-backup {
+    font-size: 0.78rem;
+    color: var(--green-lt);
+    margin-top: 5px;
+    font-style: italic;
+  }
+  .veg-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #2a7a2a;
+    border-radius: 2px;
+    background: #2a7a2a;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  /* ── Desserts ── */
+  .dessert-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed #e0d8c2;
+  }
+  .dessert-item:last-child { border-bottom: none; }
+  .dessert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  /* ── Monsoon/logistics note ── */
+  .note-box {
+    background: var(--rain-bg);
+    border: 1px solid var(--rain-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.83rem;
+    color: #1a3c55;
+    margin-bottom: 14px;
+  }
+  .note-box h4 {
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a5c8a;
+    margin-bottom: 8px;
+  }
+  .note-box ul { list-style: none; }
+  .note-box li {
+    padding: 3px 0 3px 20px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .note-box li::before {
+    content: "▸";
+    position: absolute;
+    left: 2px;
+    color: var(--rain-border);
+    font-size: 0.8rem;
+    top: 5px;
+  }
+
+  /* ── Confidence legend ── */
+  .legend {
+    font-size: 0.76rem;
+    color: var(--muted);
+    background: var(--ivory);
+    border: 1px solid #e5ddc9;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 14px;
+  }
+  .legend span { margin-right: 14px; }
+
+  /* ── Footer ── */
+  .foot {
+    background: var(--ivory);
+    border-top: 1px solid #e5ddc9;
+    padding: 12px 30px;
+    font-size: 0.71rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 560px) {
+    body { font-size: 14px; }
+    .card { margin: 0; border-radius: 0; }
+    .body { padding: 18px 16px 22px; }
+    .head { padding: 20px 16px 18px; }
+    .beer-grid { grid-template-columns: 1fr; }
+    .course-header { flex-wrap: wrap; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    body { background: #fff; font-size: 11.5px; }
+    .card {
+      margin: 0;
+      max-width: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .head, .tag-confirmed, .tag-limited, .tag-current, .note-box {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .beer-grid, .course-row, .dessert-item { break-inside: avoid; }
+    .body { padding: 16px 22px; }
+    .sec-title { margin: 14px 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="head">
+    <div class="eyebrow">Order Card · Tonight</div>
+    <h1>ShakesBierre SkyDeck</h1>
+    <div class="sub">Bangalore's Shakespeare-themed brewpub · Level 5, Eva Mall, Brigade Road</div>
+    <div class="meta-chips">
+      <span class="chip">📅 Sat 13 June 2026</span>
+      <span class="chip">👥 5 people · 1 veg</span>
+      <span class="chip">💰 ~₹2,000/head</span>
+      <span class="chip">📞 +91 96069 79931</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ═══ BEFORE YOU GO ═══ -->
+    <div class="note-box" style="margin-top:0;margin-bottom:18px;">
+      <h4>☁ Before You Go — Check These</h4>
+      <ul>
+        <li><strong>SkyDeck is fully open-air.</strong> Mid-June is monsoon onset in Bengaluru — evening showers are common. Ask when calling: <em>"Is the SkyDeck open tonight, or do we go to the Theatre Floor if it rains?"</em></li>
+        <li><strong>No published cover charge</strong> for a regular group of 5. A 10% service charge + GST applies on the bill. Confirm "any minimum spend tonight?" when phoning.</li>
+        <li><strong>Reservations strongly advised on Saturday nights</strong> — the venue advises booking ahead on weekends. If rain closes the SkyDeck, the indoor floors fill faster.</li>
+        <li><strong>Happy hours 12–5 PM</strong> — BOGO on house beers (official website). If you arrive early, use it.</li>
+      </ul>
+    </div>
+
+    <!-- ═══ DRINKS ═══ -->
+    <h2 class="sec-title">🍺 Drinks</h2>
+
+    <div class="beer-hero">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;">
+        <h3>Start with the Beer Sampler — all six house brews on one tray</h3>
+        <span class="tag-confirmed">most praised</span>
+      </div>
+      <p class="hero-why">The single most consistently praised drink experience here. TripAdvisor (Dec 2025): <em>"We tried a set of sampler beers and they were awesome."</em> Multiple reviewers echo this across years — it's the honest headline pick for the table.</p>
+
+      <div class="beer-grid">
+        <div class="beer-item">
+          <div class="beer-name">Ale Othello</div>
+          <div class="beer-abv">5.7% ABV · IPA</div>
+          <div class="beer-style">American IPA — tropical &amp; citrus notes</div>
+          <div class="beer-score">Untappd 3.41/5 · 117 ratings — highest of the lineup</div>
+        </div>
+        <div class="beer-item">
+          <div class="beer-name">As You Spike It</div>
+          <div class="beer-abv">6.2% ABV · Herb Saison</div>
+          <div class="beer-style">Farmhouse ale — rosemary &amp; thyme, fermented dry</div>
+          <div class="beer-score">Untappd 3.30/5 · 72 ratings</div>
+        </div>
+        <div class="beer-item">
+          <div class="beer-name">Brisky Brutus</div>
+          <div class="beer-abv">6.2% ABV · Stout</div>
+          <div class="beer-style">American Stout — dark roasted malt</div>
+          <div class="beer-score">Untappd 3.26/5 · 67 ratings</div>
+        </div>
+        <div class="beer-item">
+          <div class="beer-name">Romeo's Swagger</div>
+          <div class="beer-abv">4.7% ABV · Witbier</div>
+          <div class="beer-style">Belgian wheat beer — light &amp; unfiltered</div>
+          <div class="beer-score">Untappd 3.25/5 · 87 ratings</div>
+        </div>
+      </div>
+
+      <p class="happyhour">★ Happy hours 12–5 PM: BOGO on house beers (official site). After 5 PM, prices revert to standard.</p>
+    </div>
+
+    <div class="cocktail-note">
+      <strong>On cocktails:</strong> The venue markets "100+ cocktails" but no specific cocktail name is independently praised by a named reviewer — everything found traced to promotional copy or blog photo captions. Ask the bartender tonight what's freshest and actually recommended; don't order blind off a written list.
+    </div>
+
+    <!-- ═══ STARTERS ═══ -->
+    <h2 class="sec-title">🥗 Starters</h2>
+
+    <div class="course-row">
+      <div class="course-header">
+        <span class="course-label">Confirmed pick</span>
+        <span class="tag-confirmed">most praised · veg</span>
+      </div>
+      <div>
+        <span class="veg-dot"></span>
+        <span class="dish-name">Shakesbierre Chips</span>
+      </div>
+      <div class="dish-why">A house platter of three ultra-thin chips — tapioca, plantain, and potato — perfectly spiced. Multiple independent TripAdvisor reviewers: <em>"one perfect finger food that I had to order again"</em> and <em>"the best one was the CHIPS."</em> The one starter with genuine, multi-source praise. Veg, no egg.</div>
+    </div>
+
+    <div class="course-row">
+      <div class="course-header">
+        <span class="course-label">Non-veg pick</span>
+        <span class="tag-limited">limited reviews</span>
+      </div>
+      <div class="dish-name">Tawa Lamb Chops</div>
+      <div class="dish-why">Griddle-finished lamb chops marinated in ginger-garlic-curry leaf. TripAdvisor (2019): <em>"drool-worthy, juicy, extremely succulent — a must-try."</em> ShakesBierre is listed #3 on TripAdvisor's July 2025 "Best Lamb Chops in Bengaluru" list — the only 2025-era corroboration. Praise is real but old; verify it's still on the menu.</div>
+      <div class="dish-backup">Note: all dish-level praise is from 2019. Ask your server if the menu has changed — the venue rebranded in 2025–26.</div>
+    </div>
+
+    <!-- ═══ MAINS ═══ -->
+    <h2 class="sec-title">🍽 Main Course</h2>
+
+    <p style="font-size:0.80rem;color:var(--muted);margin-bottom:12px;font-style:italic;">No main course has strong recent independent praise — the data below represents the best available signals, all with limited reviews. Order based on what looks good on the physical menu tonight.</p>
+
+    <div class="course-row">
+      <div class="course-header">
+        <span class="course-label">Best veg signal</span>
+        <span class="tag-current">on current menu · Dec 2025</span>
+      </div>
+      <div>
+        <span class="veg-dot"></span>
+        <span class="dish-name">Veg Soft Noodles + Fried Rice + Manchurian Gravy</span>
+      </div>
+      <div class="dish-why">The most recent vegetarian main-course signal found. TripAdvisor (Dec 2025): <em>"Veg soft noodles, fried rice and Manchurian gravy were so nice."</em> Indo-Chinese section is confirmed on the current menu. <strong>Caveat for the vegetarian:</strong> ask the server if the noodles are eggless — soft/Hakka noodles often contain egg.</div>
+    </div>
+
+    <div class="course-row">
+      <div class="course-header">
+        <span class="course-label">Best non-veg signal</span>
+        <span class="tag-limited">Feb 2024 · single source</span>
+      </div>
+      <div class="dish-name">Chicken 2 Pyaz with Tandoori Roti</div>
+      <div class="dish-why">The most recent non-veg main-course mention. TripAdvisor (Feb 2024): <em>"chicken 2 pyaz and tandoori roti which has become our favourite dish."</em> North Indian onion-rich chicken curry — a standard for this type of multi-cuisine brewpub menu.</div>
+    </div>
+
+    <div class="course-row">
+      <div class="course-header">
+        <span class="course-label">Alternates</span>
+        <span class="tag-limited">2019 reviews only</span>
+      </div>
+      <div class="dish-name">Caprese Ravioli &amp; Fungi Bianchi Pizza</div>
+      <div class="dish-why">Two mains praised in 2019 as "heavenly" by independent reviewers. The Caprese Ravioli (sundried tomatoes, buffalo mozzarella, basil) was praised by two separate 2019 visitors. Fungi Bianchi Pizza ("cheesy, full of veggies") was praised by one. Both may still be on the menu — <strong>verify tonight.</strong> Note: fresh ravioli pasta dough commonly contains egg.</div>
+    </div>
+
+    <!-- ═══ DESSERTS ═══ -->
+    <h2 class="sec-title">🍮 Desserts</h2>
+
+    <p style="font-size:0.80rem;color:var(--muted);margin-bottom:12px;font-style:italic;">Dessert data is thin across the board. The praised items (brownie, creme brulee) appear off the current menu. The 2026 menu shows a mango-forward seasonal selection — it's June, so lean into it.</p>
+
+    <div class="dessert-item">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+        <span class="tag-current">confirmed on 2026 menu</span>
+        <span style="font-size:0.70rem;color:#b05000;">⚠ contains egg (non-veg)</span>
+      </div>
+      <div class="dessert-header">
+        <span class="dish-name">Baked Blueberry Cheesecake</span>
+        <span class="dish-price">₹375</span>
+      </div>
+      <div class="dish-why">Independently praised — TripAdvisor (2019): <em>"classic New York-style cheesecake... the perfect end to the meal."</em> Price confirmed on the 2026 magicpin menu. <strong>Note: the magicpin menu marks this with a non-veg (egg) symbol — not suitable for strict vegetarians.</strong></div>
+    </div>
+
+    <div class="dessert-item">
+      <div style="margin-bottom:4px;">
+        <span class="tag-current">on current 2026 menu · mango season</span>
+      </div>
+      <div>
+        <span class="veg-dot"></span>
+        <span class="dish-name">Mango Chia Seed Pudding</span>
+        <span class="dish-price" style="margin-left:10px;">₹325</span>
+      </div>
+      <div style="margin-top:6px;">
+        <span class="veg-dot"></span>
+        <span class="dish-name">Fresh Mango Tart</span>
+        <span class="dish-price" style="margin-left:10px;">₹325</span>
+      </div>
+      <div style="margin-top:6px;">
+        <span class="veg-dot"></span>
+        <span class="dish-name">Mango Rasmalai</span>
+        <span class="dish-price" style="margin-left:10px;">₹355</span>
+      </div>
+      <div class="dish-why" style="margin-top:6px;">No independent reviewer praise found for these items, but all three are on the current seasonal menu. June is peak mango season in India — the kitchen likely does these well. Confirm they're egg-free when ordering for the vegetarian.</div>
+    </div>
+
+    <!-- ═══ LEGEND ═══ -->
+    <div class="legend">
+      <strong>Confidence key —</strong>
+      <span><span class="tag-confirmed">most praised</span> Multiple independent reviewers, specific praise</span>
+      <span><span class="tag-current">on current menu</span> Confirmed on 2026 listings</span>
+      <span><span class="tag-limited">limited reviews</span> Real but single-source or old</span>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    Verified against TripAdvisor, Untappd, Magicpin, District, EazyDiner · Review data as of June 2026<br>
+    Only items with genuine independent praise are headlined · "Limited reviews" = real but single-source or 2019-era · Rejected items not shown<br>
+    Phone: +91 96069 79931 · Level 5, Eva Mall, Brigade Road · Sat hours: 12 PM – 1 AM
+  </div>
+
+</div>
+
+</body>
+</html>

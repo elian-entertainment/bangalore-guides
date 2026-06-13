@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShakesBierre — Expert Menu Rankings · June 2026</title>
+<style>
+  :root {
+    --ivory: #faf6ee;
+    --cream: #fffdf7;
+    --green: #1e3d2f;
+    --green-lt: #2e5c46;
+    --gold: #b8923e;
+    --gold-lt: #d4aa5f;
+    --charcoal: #2b2b26;
+    --muted: #6b675c;
+    --amber: #7a4f00;
+    --amber-lt: #fdf3de;
+    --slate: #2c5d8a;
+    --slate-lt: #e8f0f8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  .card {
+    max-width: 800px;
+    margin: 28px auto;
+    background: var(--cream);
+    border: 1px solid #e5ddc9;
+    border-top: 5px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30,61,47,0.10);
+  }
+  .head {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 28px 32px 24px;
+    text-align: center;
+  }
+  .head .eyebrow {
+    font-size: 0.70rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 8px;
+    font-family: sans-serif;
+  }
+  .head h1 { font-size: 1.75rem; font-weight: normal; letter-spacing: 0.5px; }
+  .head .sub { font-size: 0.84rem; color: #cfe0d5; margin-top: 5px; font-style: italic; }
+  .meta-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,170,95,0.45);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.78rem;
+    color: var(--ivory);
+    font-family: sans-serif;
+  }
+  .method-note {
+    background: var(--slate-lt);
+    border-left: 4px solid var(--slate);
+    margin: 22px 28px;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.84rem;
+    color: #2b3c4e;
+    line-height: 1.5;
+  }
+  .section { border-top: 2px solid #e0d8c4; }
+  .section-head { background: var(--green); padding: 14px 28px 12px; }
+  .section-head .sh-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    font-family: sans-serif;
+  }
+  .section-head h2 { font-size: 1.18rem; color: var(--ivory); font-weight: normal; margin-top: 2px; }
+  .section-head .sh-note { font-size: 0.80rem; color: #b0c9bb; margin-top: 3px; font-style: italic; }
+  .section-body { padding: 16px 28px 8px; }
+  .rank-list { list-style: none; }
+  .rank-item {
+    display: flex;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid #ede5d3;
+    break-inside: avoid;
+    align-items: flex-start;
+  }
+  .rank-item:last-child { border-bottom: none; }
+  .rank-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    background: var(--gold-lt);
+    color: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.88rem;
+    margin-top: 1px;
+    font-family: sans-serif;
+  }
+  .rank-num.top3 { background: var(--gold); color: white; }
+  .rank-body { flex: 1; min-width: 0; }
+  .rank-name { font-weight: bold; font-size: 1.00rem; color: var(--green); }
+  .rank-name .abv { font-size: 0.80em; font-weight: normal; color: var(--muted); margin-left: 5px; font-family: sans-serif; }
+  .rank-why { font-size: 0.86rem; color: var(--muted); margin-top: 3px; line-height: 1.45; font-style: italic; }
+  .rank-why b { font-style: normal; color: var(--charcoal); }
+  .rank-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+  .tag {
+    font-size: 0.71rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-family: sans-serif;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  .tag-data    { background: #e4efe8; color: var(--green-lt); border: 1px solid #b8d4c4; }
+  .tag-expert  { background: var(--amber-lt); color: var(--amber); border: 1px solid #ddb86e; }
+  .tag-current { background: var(--green-lt); color: #e8f4ec; }
+  .tag-stale   { background: #f0ece4; color: var(--muted); border: 1px solid #d0c8b8; }
+  .tag-seasonal{ background: var(--slate-lt); color: var(--slate); border: 1px solid #9ac0d8; }
+  .tag-price   { background: var(--green); color: var(--gold-lt); font-weight: bold; }
+  .tag-egg     { background: #fff3e0; color: #b84a00; border: 1px solid #f0c060; }
+  .tag-warn    { background: #fff8e1; color: #7a5800; border: 1px solid #f0c060; }
+  .cocktail-note {
+    background: #fff8e6;
+    border: 1px solid #e0c870;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 14px 0 4px;
+    font-size: 0.83rem;
+    color: #5a4200;
+    line-height: 1.5;
+  }
+  .cocktail-note b { color: #7a5200; }
+  .legend {
+    margin: 20px 28px;
+    background: #f5f1e8;
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .legend h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-weight: normal;
+  }
+  .legend-grid { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.79rem; color: var(--muted); font-family: sans-serif; }
+  .footer {
+    background: var(--green);
+    color: #9db8a8;
+    text-align: center;
+    padding: 16px 28px;
+    font-size: 0.80rem;
+    font-family: sans-serif;
+  }
+  @media (max-width: 560px) {
+    .card { margin: 10px; border-radius: 8px; }
+    .head { padding: 20px 18px 16px; }
+    .head h1 { font-size: 1.40rem; }
+    .section-head { padding: 12px 18px 10px; }
+    .section-body { padding: 12px 18px 6px; }
+    .rank-num { width: 30px; height: 30px; font-size: 0.82rem; }
+    .method-note, .legend { margin: 14px 18px; }
+  }
+  @media print {
+    body { background: white; font-size: 13px; }
+    .card { box-shadow: none; border: 1px solid #ccc; margin: 0; }
+    .rank-item { break-inside: avoid; }
+    .section-head { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- ── Header ── -->
+  <div class="head">
+    <div class="eyebrow">Expert Menu Rankings · June 2026</div>
+    <h1>boCHE &amp; ShakesBierre</h1>
+    <div class="sub">Brewpub &amp; Club — Brigade Road, Bengaluru · Ranked by expertise, tagged by evidence</div>
+    <div class="meta-chips">
+      <span class="chip">Level 5, Eva Mall</span>
+      <span class="chip">Brigade Road</span>
+      <span class="chip">+91 96069 79931</span>
+      <span class="chip">12 PM – 1 AM daily</span>
+    </div>
+  </div>
+
+  <!-- ── Methodology ── -->
+  <div class="method-note">
+    <b>How to read these rankings:</b> items are ranked by culinary and brewing expertise — not by review count. Where a review or Untappd score backs the pick, it's cited as the basis (<span class="tag tag-data" style="display:inline-block;vertical-align:middle">data-backed</span>). Where no data exists, picks carry an <span class="tag tag-expert" style="display:inline-block;vertical-align:middle">expert pick</span> tag — drawn from what a multicuisine Bangalore brewpub of this type typically does well. <span class="tag tag-stale" style="display:inline-block;vertical-align:middle">2019</span> items existed and were praised; confirm they're still on the current menu. <span class="tag tag-current" style="display:inline-block;vertical-align:middle">current</span> items are confirmed on 2025–26 menus or reviews. Egg content: <span class="tag tag-egg" style="display:inline-block;vertical-align:middle">contains egg</span> is flagged explicitly — nothing on a veg-only list carries this tag.
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — DRINKS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 1 · Alcoholic Drinks</div>
+      <h2>Top 10 Alcoholic Drinks</h2>
+      <div class="sh-note">Beer-led — the 11 house brews are the only independently verifiable drinks at Shakesbierre</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Beer Sampler Flight</div>
+            <div class="rank-why">Six pours of every house brew (~150 ml each) — the single most praised drinking experience at Shakesbierre across all reviews. Start here; pick a favourite, order a pint.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Dec 2025 TripAdvisor · 8+ reviewers mention sampler</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Ale Othello — American IPA <span class="abv">5.7%</span></div>
+            <div class="rank-why">Highest-rated house beer on Untappd; citrus-tropical hop profile. The brewpub's flagship. Order a full pint after the sampler if this one lands.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.41 · 117 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Weizenbock <span class="abv">7.1%</span></div>
+            <div class="rank-why">Highest-rated seasonal brew; strong German wheat-bock — complex, malt-forward, warming. For anyone who wants depth over refreshment. Confirm it's on tap first.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.39 · 33 ratings</span>
+              <span class="tag tag-seasonal">seasonal · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">As You Spike It — Herb Saison <span class="abv">6.2%</span></div>
+            <div class="rank-why">The most distinctive beer they brew — rosemary &amp; thyme spiced farmhouse ale, fermented dry for maximum aroma. Nothing else on this list tastes remotely like it.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.30 · 72 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Brisky Brutus — American Stout <span class="abv">6.2%</span></div>
+            <div class="rank-why">Dark, roasted — the best food-pairing beer in the lineup. Order with the lamb chops or a rich curry; roasted malt against fat is a time-tested match.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.26 · 67 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Romeo's Swagger — Belgian Witbier <span class="abv">4.7%</span></div>
+            <div class="rank-why">Unfiltered wheat, low ABV, crisp and refreshing. The all-evening beer — the one you can nurse through the whole meal without getting heavy.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.25 · 87 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Taming of the Brew — Cream Ale <span class="abv">5.2%</span></div>
+            <div class="rank-why">Smooth, malt-forward, gentle bitterness. The gateway beer for anyone in the group who doesn't usually drink craft — easy crowd-pleaser that won't challenge.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.19 · 76 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">The Bard — Hefeweizen <span class="abv">5.1%</span></div>
+            <div class="rank-why">Lowest-rated core beer, but Hefeweizen's banana/clove character is universally likeable. An underrated food pairing with spiced Indian starters.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd 3.14 · 79 ratings</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Hoppy Belgian Blonde <span class="abv">6.2%</span></div>
+            <div class="rank-why">No Untappd data found, but Belgian Blonde is inherently crowd-pleasing — fruity esters, gentle bitterness, clean finish. Confirm it's on tap tonight.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">beer roster — no Untappd data</span>
+              <span class="tag tag-seasonal">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">Mango Ale <span class="abv">seasonal</span></div>
+            <div class="rank-why">If tapped: an Indian-inflected ale that leans into mango season. Worth a single pour for novelty — exactly the kind of locally-rooted expression a Bangalore brewpub does well.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">beer roster — seasonal</span>
+              <span class="tag tag-seasonal">ask if available</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+
+      <div class="cocktail-note">
+        <b>Cocktails — honest note:</b> Despite "100+ cocktails" in the marketing, no cocktail at Shakesbierre survived independent reviewer verification. The frequently named ones (The Devil Gets His Due, Wild Goose Chase, Moscow Mule) appear only in promotional copy, never in a diner's own voice. Ask the bartender what's good tonight — a skilled bartender knows the current specials far better than any review.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — VEG STARTERS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 2 · Vegetarian Starters</div>
+      <h2>Top 10 Veg Starters</h2>
+      <div class="sh-note">All 🌱 egg-free · 2019-era items may have rotated off the menu — confirm with staff</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Shakesbierre Chips 🌱</div>
+            <div class="rank-why">The signature bar snack: thin-sliced tapioca, banana and potato chips — "super thin and perfectly spiced" and "one perfect finger food." Three independent reviewers praised these on arrival. Order immediately.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Mar 2019 · 3+ independent reviewers</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Crispy Corn Chilli Pepper 🌱</div>
+            <div class="rank-why">On the current menu (2026 signal). Crispy corn tossed with chilli is a proven Bangalore brewpub crowd-pleaser — reliable, shareable, beer-friendly.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">2026 menu signal</span>
+              <span class="tag tag-current">current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Achari Paneer Tikka 🌱</div>
+            <div class="rank-why">Pickling-spice marinade gives the paneer far more complexity than a plain tikka — bold, tangy, cuts through beer bitterness well. On the 2019 FoodRestoRank menu; confirm if still offered.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">FoodRestoRank Nov 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">Crispy Chaat 🌱</div>
+            <div class="rank-why">"Truly amazing, innovative and healthy" (TripAdvisor 2019) — bitter gourd, brinjal, spinach and potato with tamarind and mint chutney. An unusual brewpub chaat; ask if it's still on the menu.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Mar 2019</span>
+              <span class="tag tag-stale">2019 · possibly discontinued</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Dahi Kebab 🌱</div>
+            <div class="rank-why">Yogurt-set kebab has a delicate, creamy texture that plays well against hoppy beer bitterness. Listed on the 2019 FoodRestoRank menu; confirm with staff.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">FoodRestoRank Nov 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Podi Idly 🌱</div>
+            <div class="rank-why">South Indian spice-crusted rice cakes on a Brigade Road brewpub menu — a fun regional touch that works surprisingly well with beer. On the 2019 FoodRestoRank menu; confirm with staff.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">FoodRestoRank Nov 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Potato Fritters 🌱</div>
+            <div class="rank-why">On the current menu (2026 signal). Straightforward deep-fried comfort starter — the reliable fallback when the more interesting 2019-era starters are off menu tonight.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">2026 menu signal</span>
+              <span class="tag tag-current">current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">Paneer Tikka 🌱</div>
+            <div class="rank-why">The most reliable veg starter at any Indian multicuisine brewpub. Even if the rest of the 2019 menu has changed, this is almost certainly still on.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Veg Spring Rolls 🌱</div>
+            <div class="rank-why">The 2019 menu had Southeast Asian influences (Vietnamese, Cambodian dishes); a veg spring roll or rice-paper roll is a likely survivor on the multicuisine menu. Light and beer-friendly.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · 2019 SE Asian menu signal</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">Hummus &amp; Pita 🌱</div>
+            <div class="rank-why">Expert pick for the Continental/Mediterranean section. A good slow-eating companion if you're pacing the starters; pairs well with any lager or witbier.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — NON-VEG STARTERS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 3 · Non-Vegetarian Starters</div>
+      <h2>Top 10 Non-Veg Starters</h2>
+      <div class="sh-note">2019-era items may have rotated off post-rebrand — confirm before ordering</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Tawa Lamb Chops</div>
+            <div class="rank-why">"Drool-worthy, juicy, extremely succulent" (TripAdvisor 2019, 3 reviewers). ShakesBierre ranked #3 in Bangalore for lamb chops on TripAdvisor's 2025 list. The single most evidenced dish on the entire menu — don't skip it.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor 2019 · 3 reviewers · TA 2025 Best Lamb Chops list #3</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Murgh Pahadi Kebab</div>
+            <div class="rank-why">"Done to perfection. Juicy tender meat to relish" (TripAdvisor Mar 2019). Mountain-herb tandoori chicken — confirm if still available post-rebrand.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Mar 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Chicken Lollipops</div>
+            <div class="rank-why">Mentioned in research sources; crispy fried drumlets are the universal brewpub non-veg starter — high hit rate at any Indian brewpub kitchen.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · research signal</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">Sambal Prawns</div>
+            <div class="rank-why">Confirmed on the 2019 menu; spicy Southeast Asian sambal sauce, bold flavour. Likely rotated off the current menu post-rebrand — ask if still available.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Mar 2019</span>
+              <span class="tag tag-stale">2019 · possibly discontinued</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Calamari / Crispy Squid</div>
+            <div class="rank-why">Expected on any multicuisine brewpub Continental menu. Crispy calamari is one of the most reliable beer companions — light, fast, shareable.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Crispy Chicken / Chicken 65</div>
+            <div class="rank-why">South Indian spiced crispy chicken (Chicken 65) appears on virtually every multicuisine Bangalore menu. High reliability non-veg starter; no confirmation needed.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Lamb Koobideh / Minced Lamb Kebab</div>
+            <div class="rank-why">Persian-style minced lamb kebab was on the 2019 menu. Given the venue's strong lamb track record (see Tawa Lamb Chops), they handle lamb well — worth asking if this is still available.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · 2019 menu signal</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">Fish &amp; Chips</div>
+            <div class="rank-why">British pub classic; if it's done well it pairs with any lager. Ask the staff if this is on the menu today.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Jujeh Kabab — Persian Chicken Skewer</div>
+            <div class="rank-why">Persian-inspired dishes appear in research sources for this menu. Saffron-marinated grilled chicken skewers are a crowd-pleaser and fit the multicuisine spread well.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · research signal</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">BBQ / Grilled Prawn Starter</div>
+            <div class="rank-why">Various prawn preparations are expected on a multicuisine menu like this. Ask the bartender or staff what the current prawn starter is — grilled or BBQ style will pair with the IPA.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — VEG MAINS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 4 · Vegetarian Mains</div>
+      <h2>Top 10 Veg Mains</h2>
+      <div class="sh-note">🌱 egg-free · 🥚 contains egg · Soft noodles and fresh pasta may contain egg — always confirm</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Veg Hakka Noodles + Fried Rice + Manchurian 🌱</div>
+            <div class="rank-why">"Were so nice" (TripAdvisor Dec 2025) — the most recent veg main signal found. Indo-Chinese comfort food that reliably works at any multicuisine brewpub. <b>Ask if noodles are eggless</b> — soft Hakka noodles sometimes contain egg.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Dec 2025</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-warn">confirm noodles are eggless</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Fungi Bianchi Pizza 🌱</div>
+            <div class="rank-why">"Both dishes tasted so heavenly" (TripAdvisor Nov 2019). White mushroom pizza on a wood-fired crust; the same reviewer who loved the Caprese Ravioli. Brewpub + wood-fired pizza is an inherently reliable pairing.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Nov 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Goat Cheese Ravioli / Pasta 🥚</div>
+            <div class="rank-why">2026 menu signal — appears to have replaced the 2019 Caprese Ravioli. Homemade pasta contains egg. The best pasta option on the current menu for egg-tarians.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">2026 menu signal</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">Paneer Butter Masala + Naan 🌱</div>
+            <div class="rank-why">The single most reliable veg main at any Indian multicuisine venue. Rich tomato-cream sauce, soft paneer; pairs especially well with the Cream Ale's malt sweetness.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Dal Makhani 🌱</div>
+            <div class="rank-why">Slow-cooked black lentil curry; Indian comfort food that bridges cuisines well. Good shared vegetarian filler alongside a table of starters.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Gobi Manchurian (Dry) 🌱</div>
+            <div class="rank-why">Crispy battered cauliflower in sweet-sour-spicy sauce — standard on the Indo-Chinese section and a crowd-pleaser across vegetarians and non-vegetarians alike.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Veg Pizza — Margherita / house variant 🌱</div>
+            <div class="rank-why">Given the wood-fired track record (Fungi Bianchi Pizza, 2019), a veg pizza from this kitchen is a safe large-plate choice. Confirm which veg pizzas are on the current menu.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">Aglio e Olio / Pesto Penne 🌱</div>
+            <div class="rank-why">Continental pasta staple at upscale brewpubs. Egg-free if using dried pasta — confirm whether this kitchen uses fresh or dried pasta if you're strict vegetarian.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+              <span class="tag tag-warn">confirm pasta type if strict veg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Veg Biryani 🌱</div>
+            <div class="rank-why">A basmati rice main rounds out a shared table well. A venue with a strong North Indian section will have a decent dum biryani — confirmed egg-free by style.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">Thai Green / Massaman Veg Curry 🌱</div>
+            <div class="rank-why">Research signals SE Asian curries on this menu; a veg Thai curry (tofu or vegetables in coconut milk) is the best lighter veg main at a venue like this.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · SE Asian menu signal</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5 — NON-VEG MAINS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 5 · Non-Vegetarian Mains</div>
+      <h2>Top 10 Non-Veg Mains</h2>
+      <div class="sh-note">Only 2 picks carry post-2019 review data — the rest are expertise picks consistent with the multicuisine menu</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Chicken 2 Pyaz + Tandoori Roti</div>
+            <div class="rank-why">"Has become our favourite dish" — a repeat-visit TripAdvisor reviewer (Feb 2024). North Indian onion-rich chicken curry; the most recent non-veg main endorsement on the entire menu.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Feb 2024</span>
+              <span class="tag tag-current">current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Moroccan Lamb Shank Tagine (with couscous)</div>
+            <div class="rank-why">"The meat was tender enough to separate from the bone with minimal effort" (TripAdvisor Mar 2019). Slow-cooked showpiece — the premium large-plate choice when on the menu. Confirm availability post-rebrand.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Mar 2019</span>
+              <span class="tag tag-stale">2019 · confirm</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Massaman Chicken Curry</div>
+            <div class="rank-why">Thai curries are mentioned in research sources for this venue. Massaman — coconut milk, peanuts, warm spice — is inherently crowd-pleasing and pairs beautifully with the Cream Ale or Witbier.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · research signal</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">Alleppey Fish Curry</div>
+            <div class="rank-why">Research signals Alleppey curry on this menu. Kerala-style coconut + raw mango or tamarind is both regionally distinctive and a perfect foil to the Witbier's citrus notes.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · research signal</span>
+              <span class="tag tag-stale">confirm availability</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Butter Chicken + Naan</div>
+            <div class="rank-why">The single most reliable North Indian non-veg main at any Indian multicuisine restaurant. Pairs with the Cream Ale or the Stout for a classic rich-food heavy-beer match.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Grilled Fish (Continental)</div>
+            <div class="rank-why">The cleanest, lightest non-veg main for anyone who wants food without weight. The brewpub's Continental section almost certainly carries one — ask what fish is in today.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Fish &amp; Chips</div>
+            <div class="rank-why">British pub classic — batter-fried fish against a malt-forward beer is a time-tested pairing. If present on the menu, it's worth ordering. Confirm it's a main-course portion.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">Prawn Masala / Goan Prawn Curry</div>
+            <div class="rank-why">Coconut-based prawn curry is a consistent winner at Bangalore multicuisine venues. A good shared large-plate choice if the table likes seafood.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Chicken / Salami Pizza</div>
+            <div class="rank-why">Given the wood-fired track record (Fungi Bianchi Pizza, 2019), a chicken or salami pizza from this kitchen is a safe shared non-veg option at the table.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">Mutton / Chicken Biryani</div>
+            <div class="rank-why">A rice main for sharing. Note: the widely cited Hyderabadi Biryani review was debunked (the claimed blog post never mentioned biryani). A biryani here is an expert pick, not a verified standout.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · prior claim debunked</span>
+              <span class="tag tag-current">likely current</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 6 — DESSERTS
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 6 · Desserts</div>
+      <h2>Top 10 Desserts</h2>
+      <div class="sh-note">🥚 contains egg · 🌱 egg-free · Items 1–5 confirmed on the current 2026 magicpin menu</div>
+    </div>
+    <div class="section-body">
+      <ol class="rank-list">
+
+        <li class="rank-item">
+          <div class="rank-num top3">1</div>
+          <div class="rank-body">
+            <div class="rank-name">Baked Blueberry Cheesecake 🥚</div>
+            <div class="rank-why">"The perfect end to the meal" (TripAdvisor 2019). NY-style baked cheesecake with berry compote — the most-praised dessert AND confirmed on the current 2026 menu. <b>Contains egg — not suitable for strict vegetarians.</b></div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor 2019 · magicpin 2026</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-price">₹375</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">2</div>
+          <div class="rank-body">
+            <div class="rank-name">Mango Rasmalai 🌱</div>
+            <div class="rank-why">Current menu; Indian milk sweet base (rasmalai is egg-free by tradition) with a seasonal mango finish. The best dessert pick for strict vegetarians — lighter than the cheesecake, characterfully Indian.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">magicpin 2026 menu</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-price">₹355</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num top3">3</div>
+          <div class="rank-body">
+            <div class="rank-name">Mango Chia Seed Pudding 🌱</div>
+            <div class="rank-why">The lightest, cleanest dessert on the current menu — no egg, likely no dairy. The pick for the diner who wants something sweet but not heavy after a full meal.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">magicpin 2026 menu</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-price">₹325</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">4</div>
+          <div class="rank-body">
+            <div class="rank-name">Fresh Mango Tart 🥚</div>
+            <div class="rank-why">Current menu; tart shell is butter/egg-based with a seasonal mango filling. The most classic Western pastry form on the current menu — beautiful presentation.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">magicpin 2026 menu</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-price">₹325</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">5</div>
+          <div class="rank-body">
+            <div class="rank-name">Baked Alaska 🥚</div>
+            <div class="rank-why">Current menu; tableside-flambéed for the theatrical finish. Egg-based meringue exterior. A reviewer noted it's "for fans of brandy" — the dramatic closer for the table.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">magicpin 2026 menu</span>
+              <span class="tag tag-current">current</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">6</div>
+          <div class="rank-body">
+            <div class="rank-name">Shakesbierre Brownie (deconstructed) 🥚</div>
+            <div class="rank-why">"This was very good" (TripAdvisor Aug 2019) — deconstructed with honeycomb ice cream, salted caramel and meringue; "loved every bite." Possibly off the current seasonal menu; ask staff.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Aug 2019</span>
+              <span class="tag tag-stale">2019 · ask if available</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">7</div>
+          <div class="rank-body">
+            <div class="rank-name">Chocolate Cremeux 🥚</div>
+            <div class="rank-why">"My personal favorites... presentation was top notch" (TripAdvisor Nov 2019). Rich egg-yolk chocolate custard on crumble with hazelnut ice cream. Possibly off current menu; ask.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">TripAdvisor Nov 2019</span>
+              <span class="tag tag-stale">2019 · ask if available</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">8</div>
+          <div class="rank-body">
+            <div class="rank-name">Coconut Creme Brulee 🥚</div>
+            <div class="rank-why">"I enjoyed all the curries, lamb chops, and coconut creme brulee" (vidyascooking Oct 2019). Classic egg-yolk custard with a coconut twist. Likely off the current seasonal menu; ask.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">vidyascooking Oct 2019</span>
+              <span class="tag tag-stale">2019 · ask if available</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">9</div>
+          <div class="rank-body">
+            <div class="rank-name">Tiramisu 🥚</div>
+            <div class="rank-why">Classic Italian coffee dessert; mentioned in older menu sources; a reliable Continental dessert option at a brewpub with an Italian kitchen section. Confirm it's on the current menu.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · older menu signal</span>
+              <span class="tag tag-current">likely current</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="rank-num">10</div>
+          <div class="rank-body">
+            <div class="rank-name">Tres Leches 🥚</div>
+            <div class="rank-why">Milk-soaked sponge cake; mentioned in older menu sources; light, not too sweet — a good final course after a heavier meal. Likely on the Continental dessert section.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">expert pick · older menu signal</span>
+              <span class="tag tag-current">likely current</span>
+              <span class="tag tag-egg">contains egg</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- ── Legend ── -->
+  <div class="legend">
+    <h4>Tag Legend</h4>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="tag tag-data">data-backed</span> cited from a dated review or Untappd score</div>
+      <div class="legend-item"><span class="tag tag-expert">expert pick</span> culinary / brewing expertise, no review data</div>
+      <div class="legend-item"><span class="tag tag-current">current</span> confirmed on 2025–26 menu or review</div>
+      <div class="legend-item"><span class="tag tag-stale">2019</span> existed &amp; was praised; may have changed — confirm</div>
+      <div class="legend-item"><span class="tag tag-seasonal">seasonal</span> limited availability; ask before ordering</div>
+      <div class="legend-item"><span class="tag tag-egg">contains egg</span> not suitable for strict vegetarians</div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    boCHE &amp; ShakesBierre · Level 5, Eva Mall, Brigade Road, Bengaluru · +91 96069 79931 · Open 12 PM – 1 AM · Expert rankings compiled June 2026
+  </div>
+
+</div>
+</body>
+</html>

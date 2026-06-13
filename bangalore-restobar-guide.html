@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bangalore Restobar Guide · Cocktail-Forward · Fri 12 June 2026</title>
+  <style>
+    /* ── Palette ─────────────────────────────── */
+    :root {
+      --ivory:   #faf6ee;
+      --green:   #1e3d2f;
+      --green-lt:#2e5c46;
+      --gold:    #b8923e;
+      --gold-lt: #d4aa5f;
+      --charcoal:#2c2c2c;
+      --muted:   #666;
+      --card-bg: #ffffff;
+      --rain-safe-bg: #e8f5ec;
+      --rain-safe-fg: #1a5c30;
+      --rain-watch-bg:#fff8e6;
+      --rain-watch-fg:#7a5000;
+    }
+
+    /* ── Reset & Base ────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--green);
+    }
+    a { color: var(--gold); }
+
+    /* ── Layout ──────────────────────────────── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 48px;
+    }
+
+    /* ── Header ──────────────────────────────── */
+    .site-header {
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px 32px;
+    }
+    .site-header .leaf { font-size: 2rem; }
+    .site-header h1 {
+      color: var(--gold-lt);
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      margin: 8px 0 6px;
+      letter-spacing: 0.02em;
+    }
+    .site-header .tagline {
+      color: #c8d8c8;
+      font-style: italic;
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+    .context-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 16px;
+      font-size: 0.82rem;
+      color: #a8c8a8;
+    }
+    .context-strip span::before { content: '· '; }
+    .context-strip span:first-child::before { content: ''; }
+
+    /* ── Area pills ──────────────────────────── */
+    .area-strip {
+      background: var(--green-lt);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #d8eed8;
+      letter-spacing: 0.03em;
+    }
+    .area-strip strong { color: var(--gold-lt); }
+
+    /* ── Gold divider ────────────────────────── */
+    .gold-rule {
+      border: none;
+      border-top: 2px solid var(--gold);
+      opacity: 0.5;
+      margin: 28px 0;
+    }
+
+    /* ── Top Pick Banner ─────────────────────── */
+    .top-pick-banner {
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #fffdf5 60%, #fdf3d8);
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .top-pick-banner .crown { font-size: 1.5rem; margin-right: 6px; }
+    .top-pick-banner h2 { font-size: 1.25rem; color: var(--green); display: inline; }
+    .top-pick-banner .venue-title {
+      font-size: 1.4rem;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-weight: bold;
+      margin: 6px 0 4px;
+    }
+    .top-pick-banner p { font-size: 0.93rem; color: var(--charcoal); margin-bottom: 12px; }
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-weight: 700;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Section title ───────────────────────── */
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--green);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 6px;
+      margin: 36px 0 20px;
+    }
+
+    /* ── Venue Cards ─────────────────────────── */
+    .venue-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--gold);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .card-header { padding: 18px 20px 14px; border-bottom: 1px solid #f0ece4; }
+    .rank-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .rank-medal { font-size: 1.4rem; }
+    .venue-name {
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--green);
+      font-weight: bold;
+    }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tag-type { background: #e8efe9; color: var(--green-lt); }
+    .tag-area { background: #f0ece4; color: #5a4a2a; }
+    .badge-rain {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+    .rain-safe  { background: var(--rain-safe-bg);  color: var(--rain-safe-fg); }
+    .rain-watch { background: var(--rain-watch-bg); color: var(--rain-watch-fg); }
+
+    /* ── Card body sections ──────────────────── */
+    .card-body { padding: 16px 20px; }
+    .ambience-blurb {
+      font-style: italic;
+      font-family: Georgia, serif;
+      color: #3a3a3a;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      border-left: 3px solid var(--gold);
+      padding-left: 12px;
+    }
+
+    /* Price table */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+    .price-table th {
+      background: var(--green);
+      color: var(--gold-lt);
+      text-align: left;
+      padding: 6px 10px;
+      font-family: Georgia, serif;
+      font-size: 0.8rem;
+    }
+    .price-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #f0ece4;
+      vertical-align: top;
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background: #faf8f3; }
+    .price-highlight { font-weight: 700; color: var(--green); }
+    .price-ceiling { font-size: 0.78rem; color: var(--muted); }
+
+    /* Cocktails highlight box */
+    .cocktail-box {
+      background: linear-gradient(135deg, #fffdf5, #fdf3d8);
+      border: 1px solid #e8c87a;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .cocktail-box h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .cocktail-list {
+      list-style: none;
+      font-size: 0.88rem;
+    }
+    .cocktail-list li {
+      padding: 5px 0 5px 18px;
+      position: relative;
+      border-bottom: 1px dashed #e8d8b0;
+    }
+    .cocktail-list li:last-child { border-bottom: none; }
+    .cocktail-list li::before {
+      content: '🍸';
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+    }
+    .cocktail-list .cname { font-weight: 700; color: var(--green); }
+    .cocktail-list .cdesc { color: var(--muted); font-size: 0.82rem; }
+    .mocktail-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 8px; }
+
+    /* Eat & Drink columns */
+    .eat-drink-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 560px) { .eat-drink-grid { grid-template-columns: 1fr; } }
+    .eat-drink-col h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .eat-drink-col ul { list-style: none; font-size: 0.88rem; color: var(--charcoal); }
+    .eat-drink-col ul li { padding: 3px 0 3px 14px; position: relative; }
+    .eat-drink-col ul li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+
+    /* Logistics row */
+    .logistics {
+      background: #f7f4ee;
+      border-top: 1px solid #ede8df;
+      padding: 12px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .logistics strong { color: var(--charcoal); }
+
+    /* ── Comparison Table ────────────────────── */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 8px; }
+    .compare-table {
+      width: 100%;
+      min-width: 580px;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+    .compare-table th {
+      background: var(--green);
+      color: var(--gold-lt);
+      padding: 9px 12px;
+      text-align: left;
+      font-family: Georgia, serif;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .compare-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ede8df;
+      vertical-align: middle;
+    }
+    .compare-table tr:nth-child(even) td { background: #faf8f3; }
+    .compare-table tr:hover td { background: #f5f0e6; }
+    .compare-table td:first-child { font-weight: 700; color: var(--green); }
+    .cocktail-stars { color: var(--gold); letter-spacing: -1px; }
+    .urgency-high { color: #c0392b; font-weight: 700; }
+    .urgency-med  { color: #e67e22; font-weight: 600; }
+    .urgency-low  { color: var(--green-lt); }
+
+    /* ── Verdict block ───────────────────────── */
+    .verdict-block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0;
+    }
+    @media (max-width: 560px) { .verdict-block { grid-template-columns: 1fr; } }
+    .verdict-item {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 14px 16px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+      border-top: 3px solid var(--gold);
+      text-align: center;
+    }
+    .verdict-item .medal { font-size: 1.6rem; }
+    .verdict-item h3 { font-size: 0.95rem; color: var(--green); margin: 6px 0 4px; }
+    .verdict-item p { font-size: 0.8rem; color: var(--muted); }
+
+    .final-cta {
+      background: var(--green);
+      color: #d8ecd8;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-top: 20px;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .final-cta strong { color: var(--gold-lt); }
+
+    /* ── Footer ──────────────────────────────── */
+    .site-footer {
+      background: #f0ece4;
+      border-top: 2px solid #ddd6c8;
+      padding: 24px 20px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 40px;
+    }
+    .site-footer h4 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .source-list { list-style: none; columns: 2; gap: 10px; }
+    @media (max-width: 480px) { .source-list { columns: 1; } }
+    .source-list li { padding: 2px 0; }
+    .disclaimer { margin-top: 12px; font-style: italic; }
+
+    /* ── Print styles ────────────────────────── */
+    @media print {
+      :root { --ivory: #ffffff; --card-bg: #ffffff; }
+      body { font-size: 13px; }
+      .container { max-width: 100%; padding: 0 10px 20px; }
+      .site-header { background: var(--green) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .venue-card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+      .compare-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .table-scroll { overflow: visible; }
+      .compare-table { min-width: auto; }
+      .cta-button { display: none; }
+      .final-cta { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cocktail-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HEADER -->
+<header class="site-header">
+  <div class="leaf">🍸</div>
+  <h1>Bangalore Restobar Guide</h1>
+  <p class="tagline">Cocktail-forward &mdash; curated for one Friday evening with the family</p>
+  <div class="context-strip">
+    <span>Fri 12 June 2026</span>
+    <span>6 PM</span>
+    <span>Party of 4</span>
+    <span>₹2,000–5,000 all-in</span>
+    <span>Non-veg</span>
+    <span>Monsoon season ☔</span>
+  </div>
+</header>
+<div class="area-strip">
+  <strong>Search areas:</strong> Koramangala &nbsp;·&nbsp; JP Nagar &nbsp;·&nbsp; Jayanagar &nbsp;·&nbsp; MG Road &nbsp;·&nbsp; Church Street &nbsp;·&nbsp; Brigade Road
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════ TOP PICK BANNER -->
+  <div class="top-pick-banner">
+    <div><span class="crown">👑</span><h2>Tonight's Top Pick — Cocktail Edition</h2></div>
+    <div class="venue-title">🌿 SOL55 Community Bar &mdash; Koramangala</div>
+    <p>The best cocktail programme in your shortlist, inside a warm earthy bar with a <strong>retractable roof that closes when it rains</strong>. Filter Coffee Negroni, Coconut Curry Colada, live music on Fridays, and a Coastal non-veg menu that holds its own. Most budget-friendly on this list — more money left for cocktails.</p>
+    <span class="cta-button">📞 Reserve your table — it's a Friday</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════ VENUE CARDS -->
+  <h2 class="section-title">🍸 The Cocktail Shortlist — Ranked</h2>
+
+  <!-- ── CARD 1: SOL55 ── -->
+  <div class="venue-card">
+    <div class="card-header">
+      <div class="rank-row">
+        <span class="rank-medal">🥇</span>
+        <span class="venue-name">SOL55 Community Bar</span>
+        <span class="tag tag-area">📍 Koramangala 4th Block</span>
+        <span class="tag tag-type">🌿 Retractable roof · Live music</span>
+      </div>
+      <div>
+        <span class="badge-rain rain-safe">☔ Rain-safe — retractable roof closes when it rains</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="ambience-blurb">Opened in 2026, SOL55 is Koramangala's community cocktail bar — warm, earthy tones, exposed wood, and a retractable roof that feels like a garden when open and a cosy den when the monsoon forces it shut. Live music every Friday evening. The bartenders here are not pouring from a formula; they are writing one.</p>
+
+      <!-- Cocktails highlight -->
+      <div class="cocktail-box">
+        <h4>🍸 Signature Cocktails</h4>
+        <ul class="cocktail-list">
+          <li><span class="cname">Filter Coffee Negroni</span> — <span class="cdesc">Campari and gin twisted with South Indian filter coffee. Bitter, aromatic, unmistakably Bangalore.</span></li>
+          <li><span class="cname">Coconut Curry Colada</span> — <span class="cdesc">Rum with coconut and a curry-leaf whisper. Tastes like the coast.</span></li>
+          <li><span class="cname">Smoked Rosemary</span> — <span class="cdesc">Smoky, herbaceous, stirred. The one to order if you like Scotch-adjacent builds.</span></li>
+          <li><span class="cname">Berry I Need</span> — <span class="cdesc">Berry-forward and fresh. Crowd-pleaser.</span></li>
+          <li><span class="cname">Wildside</span> — <span class="cdesc">The bolder, spicier option on the menu.</span></li>
+        </ul>
+        <p class="mocktail-note">🌿 Ask for a non-alcoholic version of the Coconut Curry Colada or the Berry I Need — both translate well as mocktails</p>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>What</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Cost for two (food + drinks)</td><td>₹990–1,500</td></tr>
+          <tr><td>Cocktail per glass (est.)</td><td>~₹400–500</td></tr>
+          <tr><td>Non-veg main / thali</td><td>₹350–600</td></tr>
+          <tr><td class="price-highlight">Est. total for 4 (food + 1 cocktail each)</td><td class="price-highlight">~₹3,600–5,000</td></tr>
+          <tr><td colspan="2" class="price-ceiling">Order 1 cocktail each + share 2–3 starters — comfortably within ₹5,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="eat-drink-grid">
+        <div class="eat-drink-col">
+          <h4>🍖 Must-Eat (Non-Veg)</h4>
+          <ul>
+            <li>Coastal Thali — fish, prawn, rice, coconut curry</li>
+            <li>Goan Thali — pork vindaloo, sorpotel, poee</li>
+            <li>Grilled seafood bar bites</li>
+            <li>Indian-style grilled chicken starters</li>
+          </ul>
+        </div>
+        <div class="eat-drink-col">
+          <h4>🎵 Why Friday is special</h4>
+          <ul>
+            <li>Live music every Friday evening</li>
+            <li>Community-first bar — not a loud nightclub</li>
+            <li>Neighbourhood crowd — easy conversation</li>
+            <li>Retractable roof open on clear nights 🌙</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logistics">
+      <span>📍 <strong>Address:</strong> 749, 80 Feet Road, 4th Block, Koramangala</span>
+      <span>📞 <strong>Reserve:</strong> Zomato / call ahead — Friday live music nights fill early</span>
+      <span>🕐 Check timings on Zomato (opened 2026, confirm hours)</span>
+    </div>
+  </div>
+
+  <!-- ── CARD 2: The Permit Room ── -->
+  <div class="venue-card">
+    <div class="card-header">
+      <div class="rank-row">
+        <span class="rank-medal">🥈</span>
+        <span class="venue-name">The Permit Room</span>
+        <span class="tag tag-area">📍 MG Road (Magrath Rd)</span>
+        <span class="tag tag-type">🏛 Dravidian-themed · 4 floors · Rooftop</span>
+      </div>
+      <div>
+        <span class="badge-rain rain-safe">☔ Rain-safe — multiple indoor floors + covered rooftop terrace</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="ambience-blurb">Four floors of gloriously kitsch South Indian nostalgia — matchbox collages, satirical taxidermy, folk art posters, and an open rooftop terrace wrapped in greenery. The cocktail menu reads like a love letter to Dravidian culture; the food menu reads like your grandmother's recipe book interpreted by someone who grew up in a bar. Nothing in the MG Road belt tastes like this or looks like this.</p>
+
+      <!-- Cocktails highlight -->
+      <div class="cocktail-box">
+        <h4>🍸 Signature Cocktails</h4>
+        <ul class="cocktail-list">
+          <li><span class="cname">Paati's Magic Rasam</span> — <span class="cdesc">Whiskey, curry leaves, green chilli, rasam spice. The most Bangalore cocktail in existence.</span></li>
+          <li><span class="cname">Fizzy Kosambari</span> — <span class="cdesc">Gin with cucumber, coconut, and pomegranate. Fresh, floral, and summery.</span></li>
+          <li><span class="cname">Ginchax</span> — <span class="cdesc">Gin-based South Indian-inspired cooler. Easy to drink, hard to stop.</span></li>
+          <li><span class="cname">Kattanchaya</span> — <span class="cdesc">A cocktail built around filter coffee and dark spirits. For those who want dessert in a glass.</span></li>
+        </ul>
+        <p class="mocktail-note">🌿 Ask for a Virgin Kosambari (cucumber-coconut-pomegranate sans gin) — it's refreshing and the kitchen makes it well</p>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>What</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Cost for two (food + drinks)</td><td>₹1,900</td></tr>
+          <tr><td>Pint of beer</td><td>₹200</td></tr>
+          <tr><td>Cocktail per glass (est.)</td><td>~₹350–500</td></tr>
+          <tr><td class="price-highlight">Est. total for 4 (food + 1 cocktail each)</td><td class="price-highlight">~₹4,200–4,800</td></tr>
+          <tr><td colspan="2" class="price-ceiling">Within ₹5,000 — affordable for MG Road, especially given cocktail quality</td></tr>
+        </tbody>
+      </table>
+
+      <div class="eat-drink-grid">
+        <div class="eat-drink-col">
+          <h4>🍖 Must-Eat (Non-Veg)</h4>
+          <ul>
+            <li>Andhra Chilli Chicken — properly spiced, no compromise</li>
+            <li>Shrimp Biryani — coastal-style, praised by every reviewer</li>
+            <li>Pandi Spare Ribs — Kodava-style pork, the standout dish</li>
+            <li>Lamb Chops</li>
+            <li>Nadan Khozi Curry — Kerala chicken curry</li>
+          </ul>
+        </div>
+        <div class="eat-drink-col">
+          <h4>🏛 Why it's special</h4>
+          <ul>
+            <li>South Indian culture made into cocktail art</li>
+            <li>4 floors — always a table somewhere</li>
+            <li>Rooftop terrace with greenery</li>
+            <li>Beer at ₹200 — extraordinary for MG Road</li>
+            <li>Indoor backup if rain starts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logistics">
+      <span>📍 <strong>Address:</strong> Ramkunj Building, Magrath Road (opp. Garuda Mall, off MG Road)</span>
+      <span>📞 <strong>Reserve:</strong> Call or Zomato — 4-floor capacity means walk-in usually possible</span>
+      <span>🕐 Open daily for lunch and dinner</span>
+    </div>
+  </div>
+
+  <!-- ── CARD 3: The Scene ── -->
+  <div class="venue-card">
+    <div class="card-header">
+      <div class="rank-row">
+        <span class="rank-medal">🥉</span>
+        <span class="venue-name">The Scene — Craft Kitchen &amp; Bar</span>
+        <span class="tag tag-area">📍 JP Nagar 1st Phase</span>
+        <span class="tag tag-type">🌳 Nature-inspired · Trees &amp; fairy lights</span>
+      </div>
+      <div>
+        <span class="badge-rain rain-watch">⚠️ Rain-watch — alfresco seating; indoor + mezzanine available as backup</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="ambience-blurb">The entire bar is built around living trees — exposed-to-elements, alfresco seating under cane flower-shaped lights with fairy lights threading the canopy. High ceilings, a mezzanine for intimate seating, and green hues everywhere. It is the most garden-like bar in JP Nagar without calling itself a garden. Hitaishi was right to send this one.</p>
+
+      <div class="cocktail-box">
+        <h4>🍸 Signature Cocktails</h4>
+        <ul class="cocktail-list">
+          <li><span class="cname">Touching's Cocktail</span> — <span class="cdesc">Tequila, pickled fig, beetroot juice. Adventurous and unusual — the one to order if you like something you've never tasted before.</span></li>
+          <li><span class="cname">Clear Scenario</span> — <span class="cdesc">House signature. Clarified and clean. Consistently praised by reviewers.</span></li>
+          <li><span class="cname">Highest Hoovu</span> — <span class="cdesc">"Hoovu" means flower in Kannada — floral, aromatic, and distinctly South Bangalore.</span></li>
+          <li><span class="cname">Silk Smitha &amp; Rom Com</span> — <span class="cdesc">Two more from their creative roster. Ask the bartender which is on that evening.</span></li>
+        </ul>
+        <p class="mocktail-note">🌿 Ask for a mocktail version of Highest Hoovu — the floral-aromatic profile translates well without alcohol</p>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>What</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Cost for two (food only)</td><td>~₹1,500–2,000</td></tr>
+          <tr><td>Pint of beer</td><td>~₹275</td></tr>
+          <tr><td>Cocktail per glass (est.)</td><td>~₹400–550</td></tr>
+          <tr><td class="price-highlight">Est. total for 4 (food + 1 cocktail each)</td><td class="price-highlight">~₹3,800–5,000</td></tr>
+          <tr><td colspan="2" class="price-ceiling">Good headroom in the budget — ₹275 beer helps if anyone switches off cocktails</td></tr>
+        </tbody>
+      </table>
+
+      <div class="eat-drink-grid">
+        <div class="eat-drink-col">
+          <h4>🍖 Must-Eat (Non-Veg)</h4>
+          <ul>
+            <li>Satay Ayam — praised in multiple reviews</li>
+            <li>Pan-Asian chicken starters</li>
+            <li>Hell Boy — spicy meat dish, reviewer favourite</li>
+            <li>North Indian kebab plates</li>
+          </ul>
+        </div>
+        <div class="eat-drink-col">
+          <h4>🌳 Why it's special</h4>
+          <ul>
+            <li>Built around actual living trees — rare in JP Nagar</li>
+            <li>Named cocktails with real creativity (not generic LIIT)</li>
+            <li>Mezzanine level for private family seating</li>
+            <li>Amore dessert café in-house — great finish</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logistics">
+      <span>📍 <strong>Address:</strong> 773, Outer Ring Road, 15th Cross, JP Nagar 1st Phase</span>
+      <span>📞 <strong>Reserve:</strong> Call +91 88671 77575 or Zomato — confirm indoor/mezzanine seating for tonight</span>
+      <span>🕐 Open daily for lunch and dinner</span>
+    </div>
+  </div>
+
+  <!-- ── CARD 4: The 13th Floor ── -->
+  <div class="venue-card">
+    <div class="card-header">
+      <div class="rank-row">
+        <span class="rank-medal">4️⃣</span>
+        <span class="venue-name">The 13th Floor</span>
+        <span class="tag tag-area">📍 MG Road, Barton Centre</span>
+        <span class="tag tag-type">🌆 Iconic rooftop · Panoramic city views</span>
+      </div>
+      <div>
+        <span class="badge-rain rain-watch">⚠️ Rain-watch — open rooftop; partial glass cover from the building structure</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="ambience-blurb">The 13th Floor is where Bangalore came to drink before craft cocktails existed. Thirteen floors up in Barton Centre, MG Road, it offers an unobstructed 360-degree view of the city at night — glass and brushed steel, the city's twinkling grid below, aircraft lights overhead. The cocktail list is classical rather than creative, but the view does half the work. A place every Bangalorean should visit at least once.</p>
+
+      <!-- Cocktails highlight -->
+      <div class="cocktail-box">
+        <h4>🍸 Signature Cocktails</h4>
+        <ul class="cocktail-list">
+          <li><span class="cname">Wine & Champagne Cocktails</span> — <span class="cdesc">Their strongest suit. Kir Royale, sparkling sangria, and seasonal champagne builds.</span></li>
+          <li><span class="cname">Bangalore Sunset</span> — <span class="cdesc">House classic. Gin-based, citrus, grenadine. Best ordered at 6:30 PM when the city lights up.</span></li>
+          <li><span class="cname">Long Island Iced Tea</span> — <span class="cdesc">Reliably well-made. A workhorse in their programme.</span></li>
+          <li><span class="cname">Classic Martini variations</span> — <span class="cdesc">Stirred properly. Good if you like clean spirit-forward drinks.</span></li>
+        </ul>
+        <p class="mocktail-note">🌿 Mocktail Bangalore Sunset (virgin version with soda + citrus) is available — ask the bar team</p>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>What</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Cost for two (food + drinks)</td><td>₹1,600</td></tr>
+          <tr><td>Non-veg starter (from)</td><td>₹950</td></tr>
+          <tr><td>Cocktail per glass (est.)</td><td>~₹500–700</td></tr>
+          <tr><td class="price-highlight">Est. total for 4 (food + 1 cocktail each)</td><td class="price-highlight">~₹4,800–6,000</td></tr>
+          <tr><td colspan="2" class="price-ceiling">⚠️ Cocktail prices on MG Road run higher — confirm before ordering; may push past ₹5,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="eat-drink-grid">
+        <div class="eat-drink-col">
+          <h4>🍖 Must-Eat (Non-Veg)</h4>
+          <ul>
+            <li>Pan-Asian chicken starters — crispy, well-spiced</li>
+            <li>Thai-style prawn dishes</li>
+            <li>North Indian kebab platters</li>
+            <li>Wasabi Chicken (reviewers' favourite)</li>
+          </ul>
+        </div>
+        <div class="eat-drink-col">
+          <h4>🌆 Why it's special</h4>
+          <ul>
+            <li>Iconic Bangalore rooftop — every local knows it</li>
+            <li>Opens at 4 PM (happy hour possible 4–7 PM)</li>
+            <li>360° city views — best at golden hour or night</li>
+            <li>Great for first-timers to Bangalore nightlife</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logistics">
+      <span>📍 <strong>Address:</strong> 13th Floor, Barton Centre, MG Road</span>
+      <span>📞 <strong>Reserve:</strong> Call ahead or Zomato — walk-in usually possible but confirm rain cover tonight</span>
+      <span>🕐 <strong>Timings:</strong> 4 PM – 12 AM daily ✓ (opens before your 6 PM arrival)</span>
+    </div>
+  </div>
+
+  <!-- ── CARD 5: FLO ── -->
+
+  <div class="venue-card">
+    <div class="card-header">
+      <div class="rank-row">
+        <span class="rank-medal">5️⃣</span>
+        <span class="venue-name">FLO</span>
+        <span class="tag tag-area">📍 Church Street</span>
+        <span class="tag tag-type">🏙 Modern fine-dining bar · Fully indoor</span>
+      </div>
+      <div>
+        <span class="badge-rain rain-safe">☔ Rain-proof — fully indoor venue</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="ambience-blurb">FLO sits in the thick of Church Street's bar-hopping strip — modern, contemporary, and far calmer inside than the street outside suggests. The cocktail menu skews international; the food covers Asian, North Indian, Continental, and Sushi. It is not the most distinctive place on this list, but it is the most centrally located and rain-proof option in the CBD, with easy access to the rest of Church Street if you want to make a night of it.</p>
+
+      <!-- Cocktails highlight -->
+      <div class="cocktail-box">
+        <h4>🍸 Cocktails</h4>
+        <ul class="cocktail-list">
+          <li><span class="cname">Curated cocktail menu</span> — <span class="cdesc">International classics and in-house signature builds. Full cocktail programme, not just LIIT and beer.</span></li>
+          <li><span class="cname">Wine & spirits selection</span> — <span class="cdesc">Strong spirits list — good if someone in your group prefers Scotch or wine over cocktails.</span></li>
+          <li><span class="cname">Sushi cocktail pairings</span> — <span class="cdesc">If you order the sushi, ask the bar team for their pairing recommendation.</span></li>
+        </ul>
+        <p class="mocktail-note">🌿 Full mocktail menu available — ask for fresh-fruit based options</p>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>What</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Cost for two (food + drinks)</td><td>₹2,000</td></tr>
+          <tr><td>Cocktail per glass (est.)</td><td>~₹400–600</td></tr>
+          <tr><td class="price-highlight">Est. total for 4 (food + 1 cocktail each)</td><td class="price-ceiling">~₹4,500–5,200</td></tr>
+          <tr><td colspan="2" class="price-ceiling">Borderline on budget with cocktails — share starters to stay within ₹5,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="eat-drink-grid">
+        <div class="eat-drink-col">
+          <h4>🍖 Must-Eat (Non-Veg)</h4>
+          <ul>
+            <li>Asian-style chicken starters</li>
+            <li>North Indian kebab plates</li>
+            <li>Non-veg sushi rolls</li>
+            <li>Continental grilled chicken mains</li>
+          </ul>
+        </div>
+        <div class="eat-drink-col">
+          <h4>🏙 Why it's useful</h4>
+          <ul>
+            <li>Church Street — fully walkable from MG Road</li>
+            <li>Open until 1 AM — longest hours on this list</li>
+            <li>Fully indoor — zero monsoon risk</li>
+            <li>Good base for a Church Street bar hop after dinner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logistics">
+      <span>📍 <strong>Address:</strong> Church Street (near MSR West Park, off Brigade Road)</span>
+      <span>📞 <strong>Reserve:</strong> Walk-in usually fine; call ahead for larger groups</span>
+      <span>🕐 <strong>Timings:</strong> 12 PM – 1 AM daily ✓</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ COMPARISON TABLE -->
+  <h2 class="section-title">📊 At a Glance — All 5 Venues</h2>
+  <div class="table-scroll">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Venue</th>
+          <th>Area</th>
+          <th>Ambience</th>
+          <th>Cocktails</th>
+          <th>Est. Cost/4</th>
+          <th>Rain</th>
+          <th>Reservation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🥇 SOL55</td>
+          <td>Koramangala</td>
+          <td>Retractable roof · Live music</td>
+          <td><span class="cocktail-stars">★★★★★</span></td>
+          <td>₹3,600–5,000</td>
+          <td>☔ Safe</td>
+          <td class="urgency-high">📞 Call now!</td>
+        </tr>
+        <tr>
+          <td>🥈 The Permit Room</td>
+          <td>MG Road area</td>
+          <td>4-floor Dravidian · Rooftop garden</td>
+          <td><span class="cocktail-stars">★★★★★</span></td>
+          <td>₹4,200–4,800</td>
+          <td>☔ Safe</td>
+          <td class="urgency-med">Call ahead</td>
+        </tr>
+        <tr>
+          <td>🥉 The Scene ✨</td>
+          <td>JP Nagar</td>
+          <td>Trees &amp; fairy lights · Alfresco</td>
+          <td><span class="cocktail-stars">★★★★</span></td>
+          <td>₹3,800–5,000</td>
+          <td>⚠️ Watch</td>
+          <td class="urgency-med">📞 Call ahead</td>
+        </tr>
+        <tr>
+          <td>4️⃣ The 13th Floor</td>
+          <td>MG Road</td>
+          <td>Iconic rooftop · City views</td>
+          <td><span class="cocktail-stars">★★★</span></td>
+          <td>₹4,800–6,000*</td>
+          <td>⚠️ Watch</td>
+          <td class="urgency-med">Call ahead</td>
+        </tr>
+        <tr>
+          <td>5️⃣ FLO</td>
+          <td>Church Street</td>
+          <td>Modern indoor · CBD location</td>
+          <td><span class="cocktail-stars">★★★</span></td>
+          <td>₹4,500–5,200</td>
+          <td>☔ Safe</td>
+          <td class="urgency-low">Walk-in fine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.78rem;color:var(--muted);margin-top:6px">* The 13th Floor upper-end may exceed ₹5,000 with cocktails — confirm prices on arrival. ✨ = Hitaishi's pick, verified in-area.</p>
+
+  <!-- ═══════════════════════════════════════ FRIEND'S PICKS -->
+  <h2 class="section-title">🤝 Hitaishi's Picks — Vetted</h2>
+  <p style="font-size:0.9rem;color:var(--muted);margin-bottom:18px;font-style:italic;">Your friend recommended six venues. Here's the honest verdict on each, checked against your areas and the cocktail-first criterion.</p>
+
+  <!-- The Scene — already in main list -->
+  <div style="background:#e8f5ec;border-left:4px solid var(--green);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-size:0.88rem;">
+    <strong style="color:var(--green);">✅ The Scene (JP Nagar)</strong> — <strong>Verified &amp; promoted into the main ranking at #3.</strong> Nature-inspired bar built around trees, creative named cocktails (Touching's Cocktail, Clear Scenario), fairy-light canopy. Good call, Hitaishi.
+  </div>
+
+  <!-- Ironhill -->
+  <div style="background:#fff8e6;border-left:4px solid var(--gold);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-size:0.88rem;">
+    <strong style="color:var(--gold);">🔶 Ironhill</strong> — <strong>Main outlet: Marathahalli (outside your areas). Nearest in-area option: Forum South Mall, Konanukunte Cross (JP Nagar 7th Phase).</strong> Ironhill is the world's largest microbrewery — sheer scale is the spectacle (50,000 sq ft at Forum South). However, it is a <em>beer-first</em> brewery; the cocktail programme exists but is incidental. On a cocktail-focused family evening, it is outclassed by The Scene which is better located, better on cocktails, and more intimate. Worth a dedicated beer night another time.
+  </div>
+
+  <!-- Skipped: out of area -->
+  <div style="background:#faf6ee;border:1px solid #ddd6c8;border-radius:6px;padding:12px 16px;font-size:0.86rem;">
+    <strong style="color:var(--charcoal);">❌ Outside your six areas — skipped:</strong>
+    <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+      <li><strong>Byg Brewski</strong> — Sarjapur Road / Hennur / Yeshwantpur. The lakeside campus is spectacular but none of these are in your zone. Best garden brewery in Bangalore for another day.</li>
+      <li><strong>Maize &amp; Malt</strong> — Whitefield (also KR Puram). 60,000 sq ft maze-like brewery. Far east. Outside area.</li>
+      <li><strong>Long Boat</strong> — Marathahalli. Viking-themed brewery with a 30-ft waterfall. Outside area.</li>
+      <li><strong>ICB (Indian Craft Brewery)</strong> — Nagawara / Manyata Tech Park. 1,500-seater, heritage-brews concept. North Bangalore. Outside area.</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════ CLOSING VERDICT -->
+  <h2 class="section-title">🏆 Final Verdict</h2>
+
+  <div class="verdict-block">
+    <div class="verdict-item">
+      <div class="medal">🥇</div>
+      <h3>Best cocktails + safe</h3>
+      <p><strong>SOL55</strong><br>Koramangala<br>Filter Coffee Negroni · Live music · Rain-proof</p>
+    </div>
+    <div class="verdict-item">
+      <div class="medal">🥈</div>
+      <h3>Best food + cocktails</h3>
+      <p><strong>The Permit Room</strong><br>MG Road<br>Paati's Rasam cocktail · Pandi Ribs · ₹200 beer</p>
+    </div>
+    <div class="verdict-item">
+      <div class="medal">🥉</div>
+      <h3>Best garden ambience</h3>
+      <p><strong>The Scene</strong><br>JP Nagar<br>Trees &amp; fairy lights · Named cocktails · Mezzanine</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    In a hundred years of eating and drinking in this city, I have rarely seen the cocktail and the food earn equal standing at the same table. <strong>SOL55 does it</strong> — a Filter Coffee Negroni in one hand and a Goan thali arriving at the table while the music starts. That is the Friday evening you came here for.<br><br>
+    If the food argument matters as much as the cocktail argument, go to <strong>The Permit Room</strong> — order the Paati's Magic Rasam and the Pandi Spare Ribs, and tell me afterwards that anything on MG Road compares.<br><br>
+    And if you want to show Hitaishi you listened — <strong>The Scene in JP Nagar</strong> is the pick from her list that earned its place. Trees overhead, fairy lights, a tequila-pickled-fig cocktail. She was right.<br><br>
+    <strong>Call before you leave. It is Friday. The good tables go first.</strong>
+  </div>
+
+</div><!-- /.container -->
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <h4>Sources (verified June 2026)</h4>
+    <ul class="source-list">
+      <li>Zomato — SOL55, The Permit Room, The Scene, The 13th Floor, FLO listings</li>
+      <li>MagicPin — SOL55 (Apr 2026), The Scene (Mar 2026), The 13th Floor (Apr 2026), The Permit Room, FLO (May 2026)</li>
+      <li>EazyDiner — SOL55 Community Bar, The Permit Room, The Scene (JP Nagar)</li>
+      <li>LBB — The Scene JP Nagar review; cocktail bars in Koramangala, MG Road area</li>
+      <li>The Indian Bugle — The Scene JP Nagar review (ambience &amp; price guide)</li>
+      <li>The Balcony Stories — The Scene Craft Kitchen &amp; Bar JP Nagar</li>
+      <li>30 Best Bars India 2026 — Bangalore bar guide</li>
+      <li>BW Hotelier — SOL55 opening announcement</li>
+      <li>Restaurant India — Ironhill 2nd outlet Konanukunte Cross (JP Nagar)</li>
+      <li>Maize &amp; Malt official site — Whitefield location confirmed</li>
+      <li>Long Boat Brewing Co. official site — Marathahalli location confirmed</li>
+      <li>ICB Indian Craft Brewery — Nagawara/Manyata location confirmed</li>
+      <li>sol55.in — official site</li>
+      <li>ivorytowerhotel.com — The 13th Floor official details</li>
+    </ul>
+    <p class="disclaimer">Prices are approximate and cross-referenced across sources as of June 2026. Cocktail prices in particular vary — always confirm with the venue. All recommendations based on independent research; no sponsored content. Previous guide covered citywide restobars; this edition is restricted to Koramangala, JP Nagar, Jayanagar, MG Road, Church Street, and Brigade Road.</p>
+  </div>
+</footer>
+
+</body>
+</html>

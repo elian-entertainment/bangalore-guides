@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonight's Order — The Scene, JP Nagar</title>
+<style>
+  :root {
+    --ivory: #faf6ee;
+    --cream: #fffdf7;
+    --green: #1e3d2f;
+    --green-lt: #2e5c46;
+    --gold: #b8923e;
+    --gold-lt: #d4aa5f;
+    --charcoal: #2b2b26;
+    --muted: #6b675c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .card {
+    max-width: 760px;
+    margin: 24px auto;
+    background: var(--cream);
+    border: 1px solid #e5ddc9;
+    border-top: 5px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30,61,47,0.10);
+  }
+
+  /* ── Header ── */
+  .head {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 26px 30px 22px;
+    text-align: center;
+  }
+  .head .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 6px;
+  }
+  .head h1 {
+    font-size: 1.7rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+  }
+  .head .sub {
+    font-size: 0.85rem;
+    color: #cfe0d5;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .meta-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,170,95,0.5);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.78rem;
+    color: var(--ivory);
+  }
+
+  .body { padding: 24px 30px 28px; }
+
+  .sec-title {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid #e5ddc9;
+    padding-bottom: 6px;
+    margin: 22px 0 14px;
+  }
+  .sec-title:first-child { margin-top: 0; }
+
+  /* ── Drinks ── */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .drink-col {
+    background: var(--ivory);
+    border: 1px solid #e8e0cc;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .drink-col h3 {
+    font-size: 0.95rem;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+  .drink-item { margin-bottom: 12px; }
+  .drink-item:last-child { margin-bottom: 0; }
+  .drink-name {
+    font-weight: 700;
+    color: var(--green-lt);
+    font-size: 0.92rem;
+  }
+  .drink-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .drink-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .order-tag {
+    display: inline-block;
+    background: var(--green);
+    color: var(--ivory);
+    font-size: 0.66rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+  .pick-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.66rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+
+  /* ── Courses ── */
+  .course-row {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e0d8c2;
+  }
+  .course-row:last-child { border-bottom: none; }
+  .course-label {
+    flex: 0 0 86px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .course-main { flex: 1; }
+  .dish-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .dish-name { font-weight: 700; color: var(--green); font-size: 0.98rem; }
+  .dish-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .dish-why { font-size: 0.83rem; color: var(--muted); margin-top: 2px; }
+  .dish-backup {
+    font-size: 0.78rem;
+    color: var(--green-lt);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ── Budget ── */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+  }
+  .budget-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #efe9d8;
+  }
+  .budget-table td:last-child { text-align: right; font-weight: 700; color: var(--green); white-space: nowrap; }
+  .budget-total td {
+    background: var(--green);
+    color: var(--ivory) !important;
+    font-weight: 700;
+    border-bottom: none;
+  }
+  .budget-total td:last-child { color: var(--gold-lt) !important; }
+  .budget-offer td {
+    background: #e8f5ec;
+    color: var(--green);
+    border-bottom: none;
+    font-weight: 700;
+  }
+  .budget-note {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* ── Tips ── */
+  .tips { list-style: none; }
+  .tips li {
+    font-size: 0.84rem;
+    padding: 5px 0 5px 24px;
+    position: relative;
+  }
+  .tips li::before {
+    content: "◆";
+    position: absolute;
+    left: 4px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 8px;
+  }
+
+  .foot {
+    background: var(--ivory);
+    border-top: 1px solid #e5ddc9;
+    padding: 12px 30px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 560px) {
+    body { font-size: 14px; }
+    .card { margin: 0; border-radius: 0; }
+    .body { padding: 18px 16px 22px; }
+    .head { padding: 20px 16px 18px; }
+    .drinks-grid { grid-template-columns: 1fr; }
+    .course-row { flex-direction: column; gap: 2px; }
+    .course-label { flex: none; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    body { background: #fff; font-size: 11.5px; }
+    .card {
+      margin: 0;
+      max-width: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .head, .budget-total td, .order-tag, .pick-tag {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .drinks-grid, .course-row, .budget-table, .tips { break-inside: avoid; }
+    .body { padding: 16px 22px; }
+    .sec-title { margin: 14px 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="head">
+    <div class="eyebrow">Tonight's Order</div>
+    <h1>The Scene ~ Craft Kitchen &amp; Bar</h1>
+    <div class="sub">Trees overhead, fairy lights, and one of South Bangalore's best cocktail programmes</div>
+    <div class="meta-chips">
+      <span class="chip">📍 JP Nagar 1st Phase</span>
+      <span class="chip">📅 Fri 12 June · 6 PM</span>
+      <span class="chip">✓ Table for 2 — booked</span>
+      <span class="chip">📞 +91 88671 77575</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ═══ DRINKS ═══ -->
+    <h2 class="sec-title">🍸 The Drinks Plan</h2>
+    <div class="drinks-grid">
+
+      <div class="drink-col">
+        <h3>Your two — in this order</h3>
+        <div class="drink-item">
+          <span class="order-tag">First · with starters</span>
+          <div class="dish-line"><span class="drink-name">Touchings</span> <span class="drink-price">₹675</span></div>
+          <div class="drink-desc">Vodka, pickled guava, citrus, pink salt — the house signature, savoury-sweet-tangy. (Reformulated from the famous fig-and-beetroot version; same adventurous spirit.)</div>
+        </div>
+        <div class="drink-item">
+          <span class="order-tag">Second · with the main</span>
+          <div class="dish-line"><span class="drink-name">Rom Com</span> <span class="drink-price">₹675</span></div>
+          <div class="drink-desc">Whisky, pear, vanilla, bitters — served smoked at the table. Reviewers call it a must-try for whisky-cocktail lovers.</div>
+        </div>
+        <div class="drink-desc" style="margin-top:8px;font-style:italic;">Wild-card swap: Tales of Drakshi ₹675 — tequila, lacto-fermented grapes, Naga chilli. The most adventurous glass in the house.</div>
+      </div>
+
+      <div class="drink-col">
+        <h3>Mom picks one at the table</h3>
+        <div class="drink-item">
+          <span class="pick-tag">If she wants a cocktail</span>
+          <div class="dish-line"><span class="drink-name">Highest Hoovu</span> <span class="drink-price">₹675</span></div>
+          <div class="drink-desc">Gin, lavender, blue pea tea — floral, sweet, gentle. The signature made for her.</div>
+        </div>
+        <div class="drink-item">
+          <span class="pick-tag">If she wants wine</span>
+          <div class="dish-line"><span class="drink-name">Sula Chenin Blanc</span> <span class="drink-price">₹485</span></div>
+          <div class="drink-desc">A soft Indian white by the glass — easy and food-friendly.</div>
+        </div>
+        <div class="drink-item">
+          <span class="pick-tag">If she skips alcohol</span>
+          <div class="dish-line"><span class="drink-name">Silk Sip (mocktail)</span> <span class="drink-price">₹365</span></div>
+          <div class="drink-desc">Almond milk, cardamom, mango jelly — creamy and gentle. It's mango season.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ FOOD ═══ -->
+    <h2 class="sec-title">🍽 The Courses — all to share</h2>
+
+    <div class="course-row">
+      <div class="course-label">Starter</div>
+      <div class="course-main">
+        <div class="dish-line"><span class="dish-name">Indonesian Chicken Satay-Ayam</span> <span class="dish-price">₹485</span></div>
+        <div class="dish-why">Grilled chicken, lemongrass, kaffir lime, peanut sauce. The most consistently praised plate here — "tender, perfectly grilled."</div>
+        <div class="dish-backup">Hungry? Add Hell Boy ₹495 — fiery chicken lollipops with a cooling dip (spicy!) — or Gyoza ₹495 if mom prefers mild.</div>
+      </div>
+    </div>
+
+    <div class="course-row">
+      <div class="course-label">Main</div>
+      <div class="course-main">
+        <div class="dish-line"><span class="dish-name">Khow Suey — Chicken</span> <span class="dish-price">₹595</span></div>
+        <div class="dish-why">Burmese coconut-curry noodle bowl with a tray of condiments — warming, generous, and made for a monsoon evening. Their named must-try.</div>
+        <div class="dish-backup">Backup: Karachi Lamb Chops ₹625 + butter naan ₹95 — the chef's-special signature if the noodle bowl doesn't tempt.</div>
+      </div>
+    </div>
+
+    <div class="course-row">
+      <div class="course-label">Dessert</div>
+      <div class="course-main">
+        <div class="dish-line"><span class="dish-name">Mango Tres Leches</span> <span class="dish-price">₹455</span></div>
+        <div class="dish-why">Alphonso mango milk cake from Amaré, their in-house patisserie — one reviewer called it "the highlight of the evening." Seasonal, and June is peak mango. Do not skip.</div>
+        <div class="dish-backup">Backup: Chocolate Obsession ₹455, or ask the Amaré counter for the Basque cheesecake.</div>
+      </div>
+    </div>
+
+    <!-- ═══ BUDGET ═══ -->
+    <h2 class="sec-title">💰 The Math</h2>
+    <table class="budget-table">
+      <tr><td>Touchings + Rom Com (you)</td><td>₹1,350</td></tr>
+      <tr><td>Mom's pick (mocktail → wine → cocktail)</td><td>₹365–675</td></tr>
+      <tr><td>Satay-Ayam + Khow Suey + Mango Tres Leches</td><td>₹1,535</td></tr>
+      <tr class="budget-total"><td>Menu total</td><td>₹3,250–3,560</td></tr>
+      <tr class="budget-offer"><td>With flat 10% pre-book offer (Zomato / District, valid tonight)</td><td>₹2,925–3,204</td></tr>
+    </table>
+    <p class="budget-note">Prices exclude taxes; the bill adds a 7.5% service charge — the 10% offer roughly cancels it. If your booking wasn't made through Zomato/District, it's worth re-booking on the app before you leave (offer runs till 11:55 PM). Adding a second starter (+₹495) pushes the total ~₹3,400–3,700 on the menu.</p>
+
+    <!-- ═══ TIPS ═══ -->
+    <h2 class="sec-title">📌 Before You Go</h2>
+    <ul class="tips">
+      <li><strong>Order everything early.</strong> Reviewers' #1 warning: Friday service slows badly after the crowd lands. Your 6 PM slot is the advantage — place starters and the main together.</li>
+      <li><strong>Ask for the mezzanine</strong> — cosier, semi-private, and away from the street side (traffic noise at the front tables).</li>
+      <li><strong>Valet only</strong> (free) — self-parking is a struggle here.</li>
+      <li><strong>Live music on Fridays</strong> — call ahead to ask tonight's act and request a table away from the speakers if you two want to talk.</li>
+      <li><strong>On the way out:</strong> the Amaré patisserie counter is at the entrance — macarons and cookies from ₹90. Take a box home for dad and your sister.</li>
+    </ul>
+
+  </div>
+
+  <div class="foot">
+    Prices read from The Scene's current menu (Zomato/District, June 2026) · Reviews: The Indian Bugle, The Balcony Stories, LBB, Curly Tales, EazyDiner · Compiled 12 June 2026
+  </div>
+
+</div>
+
+</body>
+</html>

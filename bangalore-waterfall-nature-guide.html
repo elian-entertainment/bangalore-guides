@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangalore Waterfall &amp; Nature Restobars · June 2026</title>
+<style>
+  :root {
+    --ivory: #faf6ee;
+    --cream: #fffdf7;
+    --green: #1e3d2f;
+    --green-lt: #2e5c46;
+    --gold: #b8923e;
+    --gold-lt: #d4aa5f;
+    --charcoal: #2b2b26;
+    --muted: #6b675c;
+    --water-blue: #1a3a5c;
+    --water-blue-lt: #2a5a8c;
+    --water-bg: #e8f3ff;
+    --stream-teal: #1a4a4a;
+    --stream-bg: #e0f4f0;
+    --talk-green: #1a4d2e;
+    --talk-amber: #6b4200;
+    --bg-talk-green: #eaf4ee;
+    --bg-talk-amber: #fdf3e0;
+    --red-muted: #7a2020;
+    --bg-red: #fdf0f0;
+    --tonight-green: #1a4d2e;
+    --tonight-amber: #6b4200;
+    --tonight-red: #7a2020;
+    --bg-tonight-green: #e8f5ed;
+    --bg-tonight-amber: #fff8e0;
+    --bg-tonight-red: #fdf0f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; }
+
+  /* ── Global Header ── */
+  .guide-head {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 34px 36px 28px;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .guide-head::before {
+    content: '💧';
+    font-size: 6rem;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    opacity: 0.07;
+    transform: rotate(-15deg);
+  }
+  .guide-head::after {
+    content: '🌿';
+    font-size: 5rem;
+    position: absolute;
+    bottom: -10px;
+    right: -5px;
+    opacity: 0.09;
+    transform: rotate(10deg);
+  }
+  .guide-head .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 8px;
+  }
+  .guide-head h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+  }
+  .guide-head .sub {
+    font-size: 0.9rem;
+    color: #cfe0d5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .party-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,170,95,0.45);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.79rem;
+    color: var(--ivory);
+  }
+
+  /* ── Area strip ── */
+  .area-strip {
+    background: var(--gold);
+    padding: 10px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    align-items: center;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 28px;
+  }
+  .area-strip .label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .area-tag {
+    background: rgba(255,255,255,0.20);
+    border-radius: 14px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    color: #fff;
+  }
+
+  /* ── Note boxes ── */
+  .note-box {
+    background: var(--bg-red);
+    border: 1px solid #e0b8b8;
+    border-left: 4px solid var(--red-muted);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    font-size: 0.84rem;
+    color: var(--charcoal);
+  }
+  .note-box strong { color: var(--red-muted); }
+  .note-box p + p { margin-top: 6px; }
+
+  .info-box {
+    background: var(--water-bg);
+    border: 1px solid #b8d4f0;
+    border-left: 4px solid var(--water-blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    font-size: 0.84rem;
+    color: var(--charcoal);
+  }
+  .info-box strong { color: var(--water-blue); }
+  .info-box p + p { margin-top: 6px; }
+
+  /* ── Section heading ── */
+  .section-head {
+    font-size: 0.73rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid #ddd5be;
+    padding-bottom: 7px;
+    margin: 32px 0 20px;
+  }
+
+  /* ── Venue card ── */
+  .venue-card {
+    background: var(--cream);
+    border: 1px solid #e5ddc9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 14px rgba(30,61,47,0.07);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid #eae0cc;
+  }
+  .rank-badge {
+    flex: 0 0 48px;
+    height: 48px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .card-title { flex: 1; }
+  .card-title h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--green);
+    letter-spacing: 0.2px;
+  }
+  .card-title .location-line {
+    font-size: 0.79rem;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 14px;
+    padding: 3px 11px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  /* Ambience badges */
+  .badge-waterfall {
+    background: var(--water-bg);
+    color: var(--water-blue);
+    border: 1px solid #9ec4e8;
+  }
+  .badge-stream {
+    background: var(--stream-bg);
+    color: var(--stream-teal);
+    border: 1px solid #88ccc0;
+  }
+  .badge-koi {
+    background: #e6f7f0;
+    color: #1a4a3a;
+    border: 1px solid #7ec8aa;
+  }
+  .badge-forest {
+    background: #eaf4ee;
+    color: var(--green);
+    border: 1px solid #a0c8b0;
+  }
+  .badge-pavilion {
+    background: #f4eefc;
+    color: #3a1a5c;
+    border: 1px solid #c4a8e0;
+  }
+  /* Noise badges */
+  .badge-talkable {
+    background: var(--bg-talk-green);
+    color: var(--talk-green);
+    border: 1px solid #a8d8bc;
+  }
+  .badge-loud {
+    background: var(--bg-talk-amber);
+    color: var(--talk-amber);
+    border: 1px solid #e0c07a;
+  }
+  .badge-very-loud {
+    background: #fdf0f0;
+    color: #7a2020;
+    border: 1px solid #e0a8a8;
+  }
+  /* Monsoon badges */
+  .badge-monsoon-ok {
+    background: #e8f0ff;
+    color: #1a3d70;
+    border: 1px solid #a8bce8;
+  }
+  .badge-monsoon-partial {
+    background: #fff8e0;
+    color: #6b4200;
+    border: 1px solid #e0c87a;
+  }
+  .badge-monsoon-risk {
+    background: #fdf0f0;
+    color: #7a2020;
+    border: 1px solid #e0a8a8;
+  }
+  /* Tonight badges */
+  .badge-tonight-good {
+    background: var(--bg-tonight-green);
+    color: var(--tonight-green);
+    border: 1px solid #90c8a8;
+  }
+  .badge-tonight-maybe {
+    background: var(--bg-tonight-amber);
+    color: var(--tonight-amber);
+    border: 1px solid #e0c07a;
+  }
+  .badge-tonight-hard {
+    background: var(--bg-tonight-red);
+    color: var(--tonight-red);
+    border: 1px solid #e0a8a8;
+  }
+  /* Other */
+  .badge-veg {
+    background: #f0fbe8;
+    color: #2a5a1a;
+    border: 1px solid #a8d890;
+  }
+  .badge-premium {
+    background: #fdf6e0;
+    color: #6b4a00;
+    border: 1px solid #e0c878;
+  }
+  .badge-far {
+    background: #f4f0ec;
+    color: #5a4a3a;
+    border: 1px solid #c8bca8;
+  }
+
+  .card-body { padding: 18px 22px 20px; }
+
+  /* ── Feature hero ── */
+  .feature-hero {
+    background: linear-gradient(135deg, var(--water-bg) 0%, var(--stream-bg) 100%);
+    border: 1px solid #b8d8d0;
+    border-radius: 8px;
+    padding: 13px 16px 12px;
+    margin-bottom: 16px;
+  }
+  .feature-hero .fh-head {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--water-blue);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .feature-hero .fh-desc {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .feature-hero .fh-source {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .reviewer-note {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .reviewer-note em { font-style: normal; color: var(--green-lt); font-weight: 700; }
+
+  /* ── Cocktail box ── */
+  .cocktail-box {
+    background: var(--ivory);
+    border: 1px solid #e0d4b8;
+    border-left: 3px solid var(--gold);
+    border-radius: 7px;
+    padding: 13px 16px;
+    margin-bottom: 14px;
+  }
+  .cocktail-box .cb-head {
+    font-size: 0.69rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .cocktail-list { list-style: none; }
+  .cocktail-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px dashed #e8dfc8;
+    font-size: 0.85rem;
+  }
+  .cocktail-list li:last-child { border-bottom: none; }
+  .c-name { font-weight: 700; color: var(--green-lt); flex: 0 0 auto; }
+  .c-price { color: var(--gold); font-weight: 700; white-space: nowrap; flex: 0 0 auto; }
+  .c-desc { color: var(--muted); font-size: 0.8rem; flex: 1; }
+
+  /* ── Food grid ── */
+  .food-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .food-col {
+    background: var(--ivory);
+    border: 1px solid #e8e0cc;
+    border-radius: 7px;
+    padding: 12px 14px;
+  }
+  .food-col .fc-head {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .food-col ul { list-style: none; }
+  .food-col ul li {
+    font-size: 0.83rem;
+    color: var(--charcoal);
+    padding: 3px 0;
+    border-bottom: 1px dashed #e8dfc8;
+  }
+  .food-col ul li:last-child { border-bottom: none; }
+  .food-col ul li strong { color: var(--green-lt); }
+
+  /* ── Venue meta row ── */
+  .venue-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .venue-meta .vm-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .vm-item strong { color: var(--charcoal); }
+
+  /* ── Tonight callout ── */
+  .tonight-box {
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 0.83rem;
+  }
+  .tonight-box.good {
+    background: var(--bg-tonight-green);
+    border: 1px solid #90c8a8;
+    color: var(--tonight-green);
+  }
+  .tonight-box.maybe {
+    background: var(--bg-tonight-amber);
+    border: 1px solid #e0c07a;
+    color: var(--tonight-amber);
+  }
+  .tonight-box.hard {
+    background: var(--bg-tonight-red);
+    border: 1px solid #e0a8a8;
+    color: var(--tonight-red);
+  }
+  .tonight-box strong { display: block; font-size: 0.77rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 2px; }
+
+  /* ── Compare table ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+  .compare-table th {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 9px 10px;
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .compare-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e8e0cc;
+    vertical-align: top;
+    color: var(--charcoal);
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--ivory); }
+  .compare-table tr:hover td { background: #f0ebe0; }
+  .compare-table td strong { color: var(--green); }
+  .compare-table .stars { color: var(--gold); letter-spacing: -1px; }
+  .compare-table .t-good { color: var(--tonight-green); font-weight: 700; }
+  .compare-table .t-maybe { color: var(--tonight-amber); font-weight: 700; }
+  .compare-table .t-hard { color: var(--tonight-red); font-weight: 700; }
+
+  /* ── Verdict block ── */
+  .verdict-block {
+    background: var(--green);
+    color: var(--ivory);
+    border-radius: 10px;
+    padding: 26px 28px;
+    margin-top: 32px;
+  }
+  .verdict-block h3 {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 16px;
+  }
+  .verdict-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .verdict-row:last-child { margin-bottom: 0; }
+  .vr-label {
+    flex: 0 0 160px;
+    font-size: 0.74rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    padding-top: 2px;
+  }
+  .vr-text {
+    flex: 1;
+    font-size: 0.88rem;
+    color: #ddebd5;
+    line-height: 1.5;
+  }
+  .vr-text strong { color: var(--ivory); }
+
+  /* ── Responsive ── */
+  @media (max-width: 560px) {
+    .guide-head { padding: 22px 18px 18px; }
+    .guide-head h1 { font-size: 1.4rem; }
+    .food-grid { grid-template-columns: 1fr; }
+    .card-head { flex-direction: column; gap: 10px; }
+    .rank-badge { width: 40px; height: 40px; font-size: 1.1rem; }
+    .compare-table { font-size: 0.72rem; }
+    .compare-table th, .compare-table td { padding: 6px 7px; }
+    .verdict-row { flex-direction: column; gap: 4px; }
+    .vr-label { flex: none; }
+    .wrap { padding: 12px 12px 36px; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .wrap { padding: 0; max-width: 100%; }
+    .venue-card { break-inside: avoid; box-shadow: none; }
+    .verdict-block { break-inside: avoid; }
+    .guide-head::before, .guide-head::after { display: none; }
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══ HEADER ══ -->
+  <div class="guide-head">
+    <div class="eyebrow">Bangalore · June 2026 · Water &amp; Nature Edition</div>
+    <h1>Waterfalls, Streams &amp; Garden Restobars</h1>
+    <div class="sub">Ambience-first · food &amp; drinks both verified · 5 people (1 vegetarian)</div>
+    <div class="party-chips">
+      <span class="chip">💧 Real water features only</span>
+      <span class="chip">🌿 Nature immersion</span>
+      <span class="chip">☂️ Monsoon notes</span>
+      <span class="chip">Budget flexible · cost shown per head</span>
+    </div>
+  </div>
+
+  <div class="area-strip">
+    <span class="label">Areas covered</span>
+    <span class="area-tag">Marathahalli</span>
+    <span class="area-tag">Hennur</span>
+    <span class="area-tag">RR Nagar</span>
+    <span class="area-tag">Whitefield</span>
+    <span class="area-tag">Koramangala</span>
+    <span class="area-tag">MG Road</span>
+  </div>
+
+  <!-- ══ NOTES ══ -->
+  <div class="note-box">
+    <p><strong>Venues excluded after verification:</strong> Serengeti (Madiwala) is confirmed permanently closed — JustDial lists it "Closed Down," no reviews after 2023. Bastian Garden City, The Reservoire, and Daddy were independently verified and have no real water feature — "garden," "plant decor," and "tropical" in their marketing refer to potted plants or rooftop seating, not waterfalls or ponds.</p>
+  </div>
+
+  <div class="info-box">
+    <p><strong>How this is ranked:</strong> Water/nature feature authenticity comes first — every venue here has a confirmed, currently-present water feature verified by multiple independent reviewers. Then food quality and drinks quality (both must be genuinely good, not just ambience). Noise level and monsoon cover are flagged honestly per venue. Budget is flexible — cost shown so you can judge value.</p>
+  </div>
+
+  <!-- ══ VENUE CARDS ══ -->
+  <div class="section-head">Ranked Shortlist · 7 Venues</div>
+
+  <!-- ─── #1 Long Boat ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥇</div>
+      <div class="card-title">
+        <h2>Long Boat Brewing Co</h2>
+        <div class="location-line">Marathahalli · ~35–50 min from Koramangala · +91 080 4736 0054</div>
+        <div class="badges">
+          <span class="badge badge-waterfall">💧 Indoor Waterfall</span>
+          <span class="badge badge-very-loud">🔊 Very Loud</span>
+          <span class="badge badge-monsoon-ok">☂️ Fully Covered</span>
+          <span class="badge badge-tonight-hard">Tonight: Must Reserve</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">💧 Water Feature</div>
+        <div class="fh-desc">A 30-foot indoor waterfall cascading through a Viking longboat hall — and water actually flows through the glass-top surfaces of select tables. The entire waterfall is inside the building; no rain risk at the feature itself.</div>
+        <div class="fh-source">Confirmed by: TripAdvisor multiple reviews (2022–Oct 2025), longboatbrewing.com, Magicpin May 2026. Height claim ("30 feet, India's largest in a brewpub") originates from venue marketing — independently no one has measured it, but reviewers consistently confirm an impressively tall waterfall.</div>
+      </div>
+
+      <p class="reviewer-note">Three floors, an 800-person capacity Viking hall, a longboat suspended from the ceiling, and <em>beer that flows as fast as the water</em>. The noise on Saturday nights is real — don't come expecting conversation — but the scale and the concept are unlike anything else in Bangalore's brewery scene.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍺 Craft Beer &amp; Cocktails</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Watermelon Wheat</span><span class="c-price">~₹200/250ml</span><span class="c-desc">Summer fruity wheat — most-mentioned signature</span></li>
+          <li><span class="c-name">Lemongrass Beer</span><span class="c-price">~₹200/250ml</span><span class="c-desc">Aromatic and refreshing; praised by Oct 2025 reviewers</span></li>
+          <li><span class="c-name">Guava Beer</span><span class="c-price">~₹200/250ml</span><span class="c-desc">House craft fruit ale</span></li>
+          <li><span class="c-name">Aqua di Roja</span><span class="c-price">est.</span><span class="c-desc">Signature cocktail — rose-forward</span></li>
+          <li><span class="c-name">Scandinavian Skies</span><span class="c-price">est.</span><span class="c-desc">Viking-themed cocktail</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Picks</div>
+          <ul>
+            <li><strong>Nashville Hot Wings</strong> — crowd favourite</li>
+            <li><strong>Chicken Tikka</strong> — consistently praised</li>
+            <li><strong>Chicken Pepper Fry</strong> — Indian prep</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg Picks</div>
+          <ul>
+            <li><strong>Palak Kofta Makhani</strong> — ₹290</li>
+            <li><strong>Dal Makhani</strong> — ₹299</li>
+            <li><strong>Peri Peri Fries Basket</strong> — ₹219</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹1,500–2,000/person</strong> (food + 2 beers)</span>
+        <span class="vm-item">⏰ <strong>12 PM–12:30 AM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Moderate</strong></span>
+        <span class="vm-item">☂️ Monsoon: <strong>Fully indoor — zero rain risk</strong></span>
+      </div>
+
+      <div class="tonight-box hard">
+        <strong>Tonight (Sat 13 June) — Very Difficult Walk-In</strong>
+        Multiple reviewers say "one has to reserve before going in." Call +91 080 4736 0054 immediately — if they have a slot, grab it. Long shot without a reservation.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #2 Oia ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥈</div>
+      <div class="card-title">
+        <h2>Oia Bangalore</h2>
+        <div class="location-line">Hennur · ~35–50 min from Koramangala · +91 960 603 1145</div>
+        <div class="badges">
+          <span class="badge badge-koi">🐠 2,000 sq.ft. Koi Pond</span>
+          <span class="badge badge-waterfall">💧 Mini Waterfall</span>
+          <span class="badge badge-very-loud">🔊 Very Loud</span>
+          <span class="badge badge-monsoon-partial">⚠️ Partial Cover</span>
+          <span class="badge badge-tonight-maybe">Tonight: Long Shot</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">🐠 Water Feature</div>
+        <div class="fh-desc">A 2,000 sq.ft. koi pond at the heart of the venue — diverse koi fish, lush aquatic plants, quaint wooden bridges, and a misting system that sprays a cool haze over the water. A mini waterfall feeds the pond. The Santorini-inspired whitewashed arches and blue domes frame it all.</div>
+        <div class="fh-source">Confirmed by: LBB Bangalore (detailed description), Bangalorebeat.com 2025, multiple TripAdvisor and Magicpin reviewers explicitly mentioning the koi pond. January 2026 TripAdvisor review active. Feature is real and current.</div>
+      </div>
+
+      <p class="reviewer-note">At 87,000 sq.ft. with 1,800 seats, Oia is Asia's largest pub — and you feel every bit of that scale. The koi pond seating is the jewel: wooden bridges, water misting your face, lantern light. The rest of the venue (amphitheatre, cabanas, bar terraces) fills up fast and loud on Saturdays. <em>Come for the pond, not the food</em> — the kitchen is inconsistent.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍹 Cocktails</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">People's Obsession</span><span class="c-price">est. ₹400–500</span><span class="c-desc">LBB-named signature — multiple mentions</span></li>
+          <li><span class="c-name">Oia's LIIT</span><span class="c-price">est. ₹400–500</span><span class="c-desc">Their Long Island variant</span></li>
+          <li><span class="c-name">House Cocktail Menu</span><span class="c-price">est.</span><span class="c-desc">Generally praised for presentation; one reviewer called them "worst drinks" — order off the curated menu, not specials</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍖 Non-Veg Picks</div>
+          <ul>
+            <li><strong>Pork Belly</strong> — soy chilli garlic</li>
+            <li><strong>BBQ Baos</strong> — praised for texture</li>
+            <li><strong>Pani Puri Shots</strong> — theatrical</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg Picks</div>
+          <ul>
+            <li><strong>Paneer Tikka</strong></li>
+            <li><strong>Mushroom Risotto</strong></li>
+            <li><strong>Mezze Platter</strong> — Mediterranean</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹1,500–2,000/person</strong> (food + 2 drinks)</span>
+        <span class="vm-item">⏰ <strong>12 PM–12:30 AM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Moderate</strong></span>
+        <span class="vm-item">⚠️ Monsoon: <strong>Koi pond &amp; open sections exposed</strong></span>
+      </div>
+
+      <div class="tonight-box maybe">
+        <strong>Tonight (Sat 13 June) — Long Shot, Worth a Call</strong>
+        1,800-seat capacity means there may be slots — but koi pond seating will be gone without a reservation. Call +91 960 603 1145. Jan 2026 TripAdvisor review flagged incorrect card charges — check your bill at the end.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #3 Stonny Brook ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥉</div>
+      <div class="card-title">
+        <h2>Stonny Brook</h2>
+        <div class="location-line">Rajarajeshwari Nagar (RR Nagar) · ~40–55 min from Koramangala · +91 99007 26666</div>
+        <div class="badges">
+          <span class="badge badge-stream">🌊 Stream Under Tables</span>
+          <span class="badge badge-waterfall">💧 Indoor Waterfall</span>
+          <span class="badge badge-loud">⚠️ Loud</span>
+          <span class="badge badge-monsoon-ok">☂️ Fully Covered</span>
+          <span class="badge badge-tonight-good">Tonight: Most Bookable</span>
+          <span class="badge badge-veg">Veg Friendly</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">🌊 Water Feature — India's First Stream Restaurant</div>
+        <div class="fh-desc">A continuous stream of recycled water (10,000–12,000 litres cycling constantly) flows in channels beneath the dining tables. Guests sit with their feet touching the water. An indoor waterfall is also on the premises. The dining area has a forest-canopy aesthetic: cobblestone pathways, hanging flowers from the ceiling, potted plants throughout. Complimentary fish pedicure on arrival.</div>
+        <div class="fh-source">Confirmed by: Curly Tales (primary feature article with detailed descriptions), LBB Bangalore, Magicpin November 2025, Zomato active. Concept has been operating for years; water channels are a structural feature, not a seasonal installation. One May 2025 reviewer flagged water smelling "oily" — single source, may be an off day, but worth noting.</div>
+      </div>
+
+      <p class="reviewer-note">This is the most <em>literally immersive</em> water-dining experience in Bangalore — you're not looking at a waterfall from across the room, you're sitting with a stream flowing beneath your chair. The forest aesthetic (hanging flowers, cobblestone paths, fish pedicure as you enter) makes the whole thing feel like a walk into a rainforest. Food is average — come for the experience, not the meal. <em>Drinks are mid</em>; this is not a cocktail bar.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🥤 Drinks</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Stonny Brook Special</span><span class="c-price">est. ₹300–400</span><span class="c-desc">House signature cocktail</span></li>
+          <li><span class="c-name">Tender Coconut Special</span><span class="c-price">est. ₹200–300</span><span class="c-desc">Fresh coconut-based mocktail or cocktail</span></li>
+          <li><span class="c-name">Beer Selection</span><span class="c-price">est. ₹250–350</span><span class="c-desc">Standard brands; no craft brewery on-site</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg</div>
+          <ul>
+            <li><strong>Chicken Masala</strong> — Indian-style</li>
+            <li><strong>Yang Chow Fried Rice</strong> — multi-cuisine</li>
+            <li><strong>Alfredo Pasta</strong> — Continental</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg (Strong Selection)</div>
+          <ul>
+            <li><strong>Pesto Veggie Appetizer</strong></li>
+            <li><strong>Dal Palak</strong></li>
+            <li><strong>Baby Corn Chilli</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹800–1,200/person</strong> (most affordable on this list)</span>
+        <span class="vm-item">⏰ <strong>11:30 AM–11:59 PM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Strong</strong></span>
+        <span class="vm-item">☂️ Monsoon: <strong>Fully indoor — zero rain risk</strong></span>
+      </div>
+
+      <div class="tonight-box good">
+        <strong>Tonight (Sat 13 June) — Best Chance of All 7</strong>
+        Book via Zomato or Swiggy Dineout right now — or call +91 99007 26666. RR Nagar location means less competition than central venues. If anywhere has slots tonight, it's here.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #4 Byg Brewski ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">4️⃣</div>
+      <div class="card-title">
+        <h2>Byg Brewski Brewing Company</h2>
+        <div class="location-line">Hennur Bagalur Road · ~35–50 min from Koramangala</div>
+        <div class="badges">
+          <span class="badge badge-stream">🌊 River (4.1L litres)</span>
+          <span class="badge badge-koi">🐠 Koi Pond</span>
+          <span class="badge badge-very-loud">🔊 Very Loud</span>
+          <span class="badge badge-monsoon-risk">⛈️ Open-Air Risk</span>
+          <span class="badge badge-tonight-hard">Tonight: Risky (Monsoon)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">🌊 Water Feature</div>
+        <div class="fh-desc">A 160-foot "river" channel holding 4.1 lakh litres of water, plus a separate koi pond (1.4 lakh litres) with floating walkways — all within a resort-scale open-air property. The venue is designed as a Colosseum-inspired amphitheatre. This is the largest water body by volume on this list.</div>
+        <div class="fh-source">Confirmed by: Posist architectural case study, Bangalorebeat.com 2025, multiple TripAdvisor reviewers citing "river" and "koi pond." Note: venue/architect marketing sometimes says "waterfall" but independent reviewers consistently describe a river/pond, not a cascading waterfall. Reporting as river + pond.</div>
+      </div>
+
+      <p class="reviewer-note">India's most-celebrated brewery, and the Hennur outlet earns that reputation — a genuine resort property, not just a pub. The river and koi pond are on a scale you have to see. But Saturday nights bring the North Bangalore party crowd, and the noise and energy reflect that. <em>The monsoon caveat is serious</em>: one TripAdvisor reviewer explicitly wrote "most seating areas were unavailable during monsoon season due to rain." On a June Saturday, this is a real risk.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍺 Craft Beer</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Nitro Smoked Lager</span><span class="c-price">~₹400/500ml</span><span class="c-desc">Signature — most-mentioned by reviewers</span></li>
+          <li><span class="c-name">Guava IPA</span><span class="c-price">~₹400/500ml</span><span class="c-desc">Fruity craft IPA</span></li>
+          <li><span class="c-name">Byg Hefeweizen</span><span class="c-price">~₹400/500ml</span><span class="c-desc">German-style wheat, crowd favourite</span></li>
+          <li><span class="c-name">Czech Dark Lager</span><span class="c-price">~₹400/500ml</span><span class="c-desc">Rich and malty</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Picks</div>
+          <ul>
+            <li><strong>Bombay Chicken Ghee Roast</strong></li>
+            <li><strong>Mutton Kebab</strong> — reviewer: "outstanding"</li>
+            <li><strong>Garden City Thin Crust Pizza</strong></li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg Picks</div>
+          <ul>
+            <li><strong>Honey Chilli Potato</strong></li>
+            <li><strong>Chilli Mushroom</strong></li>
+            <li><strong>Signature Nachos</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹1,500–2,000/person</strong> (food + 2 beers)</span>
+        <span class="vm-item">⏰ <strong>12 PM–11 PM</strong> (conservative estimate)</span>
+        <span class="vm-item">🌿 Veg menu: <strong>Moderate</strong></span>
+        <span class="vm-item">⛈️ Monsoon: <strong>Largely open-air — rain tonight = big risk</strong></span>
+      </div>
+
+      <div class="tonight-box hard">
+        <strong>Tonight (Sat 13 June) — Not Recommended in Active Monsoon</strong>
+        "Most seating unavailable during monsoon season due to rain" (TripAdvisor). If it rains tonight — and June in Bangalore means it probably will — a large portion of the venue will be unusable. Reserve via widget.reservego.co if you want to try, but factor in the weather risk.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #5 BLR Brewing Co ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">5️⃣</div>
+      <div class="card-title">
+        <h2>BLR Brewing Co</h2>
+        <div class="location-line">Whitefield (Hoodi) · ~50–75 min from Koramangala · India's claimed largest brewpub</div>
+        <div class="badges">
+          <span class="badge badge-waterfall">💧 45-ft Indoor Waterfall</span>
+          <span class="badge badge-koi">🐠 Koi Pond</span>
+          <span class="badge badge-very-loud">🔊 Very Loud</span>
+          <span class="badge badge-monsoon-partial">⚠️ Partial Cover</span>
+          <span class="badge badge-tonight-maybe">Tonight: Possible (Large Venue)</span>
+          <span class="badge badge-far">Far: Whitefield</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">💧 Water Feature</div>
+        <div class="fh-desc">A 45-foot artificial indoor waterfall claimed as India's tallest in a brewpub, plus a koi pond and decorative stone bridge connecting sections of the 65,000 sq.ft. venue. The waterfall is the visual centrepiece and multiple independent reviewers confirm it is impressively large.</div>
+        <div class="fh-source">Confirmed by: Curly Tales (feature article), Asia Brewers Network press coverage, TripAdvisor reviewer quotes. "India's largest" is a venue marketing claim — no independent measurement, but multiple reviewers confirm it's genuinely tall and impressive. Confidence: high for water feature, medium for height claim.</div>
+      </div>
+
+      <p class="reviewer-note">The 45-foot waterfall is the draw, and it delivers — at 1,200 seats across multiple levels, this is a proper destination. The beers are genuinely good and priced well. The two honest flags: <em>the drive from Koramangala is 50–75 minutes on a Saturday evening</em>, and the vegetarian menu is weak — "not much variety for veg people" per reviewer.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍺 Craft Beer — Named After Indian Locales</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Ooty Ale</span><span class="c-price">est. ₹300–400</span><span class="c-desc">Nilgiri-inspired; consistently praised</span></li>
+          <li><span class="c-name">Chikamangalur</span><span class="c-price">est. ₹300–400</span><span class="c-desc">Coffee-forward — "exceptional taste and texture"</span></li>
+          <li><span class="c-name">Mysore Lager</span><span class="c-price">est. ₹300–400</span><span class="c-desc">Smooth and crisp; named after the royal city</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg</div>
+          <ul>
+            <li><strong>Chicken Donne Biryani</strong></li>
+            <li><strong>Tawa Seer Fish</strong></li>
+            <li><strong>Telangana Chicken</strong></li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg (Weak)</div>
+          <ul>
+            <li><strong>Paneer Tikka</strong> — primary option</li>
+            <li style="color: var(--muted); font-style: italic;">Limited veg variety confirmed by reviewer — flag for your vegetarian</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹800–1,500/person</strong> (food + 2 beers)</span>
+        <span class="vm-item">⏰ <strong>11 AM–1 AM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Weak — discuss with your vegetarian friend first</strong></span>
+        <span class="vm-item">⚠️ Monsoon: <strong>Partial cover; indoor waterfall is safe, outdoor seating exposed</strong></span>
+      </div>
+
+      <div class="tonight-box maybe">
+        <strong>Tonight (Sat 13 June) — Possible Walk-In (1,200 Seats)</strong>
+        Large enough that you may find seats without a reservation. The 50–75 min drive in Saturday evening traffic is the real commitment. If you're willing to make the trip, the 45-foot waterfall is worth it.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #6 The Bier Library ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">6️⃣</div>
+      <div class="card-title">
+        <h2>The Bier Library Brewery &amp; Kitchen</h2>
+        <div class="location-line">Koramangala 6th Block · 5–10 min · +91 91081 80000 · 4.4/5 · 21,000+ reviews</div>
+        <div class="badges">
+          <span class="badge badge-koi">🐠 Koi Pond</span>
+          <span class="badge badge-loud">⚠️ Loud</span>
+          <span class="badge badge-monsoon-partial">⚠️ Partial Cover</span>
+          <span class="badge badge-tonight-good">Tonight: Best Walk-In Odds</span>
+          <span class="badge badge-veg">Veg Friendly</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">🐠 Water Feature</div>
+        <div class="fh-desc">A koi pond forms the centrepiece courtyard of this 20,000 sq.ft. multi-level brewery. Seating wraps around and above the pond across multiple floors — you can watch the koi from the bar, the mezzanine, and the outdoor terrace. Not as dramatic as a waterfall, but genuinely present and well-maintained.</div>
+        <div class="fh-source">Confirmed by: LBB Bangalore article, Bangaloreepicure.com independent review, Bangalorebeat.com 2025 waterfront venue article. 21,000+ Zomato reviews over multiple years. The pond is a structural permanent feature, not seasonal.</div>
+      </div>
+
+      <p class="reviewer-note">The most reliable venue on this list — 21,000+ reviews, 4.4/5, five minutes from wherever you are in Koramangala. The koi pond is smaller in scale than Long Boat's waterfall or Oia's pond, but the <em>craft beer quality here is the best of any venue in this guide</em>. Seven beers on tap, all praised by independent reviewers, with a beer that won accolades. If you want a great night that you know will deliver, this is the safe pick.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍺 Craft Beer — 7 Taps</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Very Weiss</span><span class="c-price">est. ₹350–450</span><span class="c-desc">German wheat — banana and clove aromatics; reviewer favourite</span></li>
+          <li><span class="c-name">Ale-O-Drama</span><span class="c-price">est. ₹350–450</span><span class="c-desc">Double IPA — bold and hoppy</span></li>
+          <li><span class="c-name">Nitro Kaapi Milk Stout</span><span class="c-price">est. ₹350–450</span><span class="c-desc">Coffee stout; Bangalore's signature flavour</span></li>
+          <li><span class="c-name">Irish Red Ale</span><span class="c-price">est. ₹350–450</span><span class="c-desc">Smooth and malty; reliable session beer</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍖 Must-Orders</div>
+          <ul>
+            <li><strong>Pizza Nero</strong> — activated charcoal crust + burrata</li>
+            <li><strong>Linguria Pizza</strong> — signature</li>
+            <li><strong>Serradura</strong> — Portuguese sawdust pudding</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg Picks</div>
+          <ul>
+            <li><strong>Mushroom Galouti Kebab</strong> — "melt in mouth"</li>
+            <li><strong>Lotus Stem</strong> — popular snack</li>
+            <li><strong>Nachos</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹900–1,400/person</strong> (food + 2 craft beers)</span>
+        <span class="vm-item">⏰ <strong>12 PM–1 AM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Moderate–Strong</strong></span>
+        <span class="vm-item">⚠️ Monsoon: <strong>Koi pond seating open-air; indoor floors fully covered</strong></span>
+      </div>
+
+      <div class="tonight-box good">
+        <strong>Tonight (Sat 13 June) — Highest Walk-In Probability</strong>
+        It's in Koramangala — no traffic, no long drive. Call +91 91081 80000 to check availability. Even if the koi pond seating is full, you'll have a great night in the indoor sections.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── #7 Rim Naam ─── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">7️⃣</div>
+      <div class="card-title">
+        <h2>Rim Naam · The Oberoi Bengaluru</h2>
+        <div class="location-line">MG Road · ~20–30 min from Koramangala · +91 80 2558 5858 · Five-star</div>
+        <div class="badges">
+          <span class="badge badge-pavilion">🌳 Floating Pavilion Over Pond</span>
+          <span class="badge badge-talkable">🗣️ Talkable</span>
+          <span class="badge badge-monsoon-ok">☂️ Fully Covered</span>
+          <span class="badge badge-tonight-hard">Tonight: Very Unlikely</span>
+          <span class="badge badge-premium">₹₹₹₹ Fine Dining</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="feature-hero">
+        <div class="fh-head">🌳 Water Feature — The Most Refined on This List</div>
+        <div class="fh-desc">A wooden dining pavilion designed to appear as if it "floats" on a garden pond (lily pads, koi fish, aquatic plants) within manicured grounds of tall, dense trees. A tiled roof was added specifically to allow monsoon-season dining while retaining the outdoor feel. Name means "by the water" in Thai.</div>
+        <div class="fh-source">Confirmed by: The Oberoi official page, Explocity Bangalore independent review, Wanderlog aggregated reviews. Monsoon dining specifically confirmed by an Oberoi Facebook post. Pond and pavilion are permanent structural features of the five-star property.</div>
+      </div>
+
+      <p class="reviewer-note">This is a different register entirely — not a brewpub, not a bar, but the most genuinely beautiful water-dining setting in central Bangalore. Classical Thai music, lantern light, the sound of the garden, and <em>the only venue here where you can actually have a conversation</em>. The food is outstanding. The drinks are functional (full bar available, not a cocktail destination). The honest constraint: at ₹2,500–4,000/person, this is a fine-dining restaurant, not a night out at a bar. If budget is no object and the experience matters most, this is the answer.</p>
+
+      <div class="cocktail-box">
+        <div class="cb-head">🍽️ Food First — Full Bar Available</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Tom Yum Soup</span><span class="c-price">est. ₹800–1,200</span><span class="c-desc">Chef-driven, award-winning kitchen</span></li>
+          <li><span class="c-name">Roast Duck Red Curry</span><span class="c-price">est. ₹1,500+</span><span class="c-desc">Signature Thai preparation</span></li>
+          <li><span class="c-name">Tam Tim Krob</span><span class="c-price">est. ₹600–800</span><span class="c-desc">Jellied water chestnuts in coconut milk — the dessert to order</span></li>
+        </ul>
+      </div>
+
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Highlights</div>
+          <ul>
+            <li><strong>Crab Cakes</strong></li>
+            <li><strong>Phad Thai</strong> — classic execution</li>
+            <li><strong>Green Curry</strong> — signature</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🥦 Veg Options</div>
+          <ul>
+            <li><strong>Bangkok Vegetarian Platter</strong></li>
+            <li><strong>Vegetarian Thai Curries</strong></li>
+            <li style="color: var(--muted); font-style: italic;">Moderate veg variety — fine for 1 vegetarian</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="venue-meta">
+        <span class="vm-item">💰 <strong>~₹2,500–4,000/person</strong> (fine dining, five-star)</span>
+        <span class="vm-item">⏰ <strong>Dinner: 7 PM–11:30 PM</strong></span>
+        <span class="vm-item">🌿 Veg menu: <strong>Moderate</strong></span>
+        <span class="vm-item">☂️ Monsoon: <strong>Fully covered (tiled roof, purpose-built for rain)</strong></span>
+      </div>
+
+      <div class="tonight-box hard">
+        <strong>Tonight (Sat 13 June) — Very Unlikely</strong>
+        Limited seating, five-star reservation system, and one reviewer noted difficulty reaching them by phone. Call +91 80 2558 5858 immediately after 5 PM — but plan this as a future outing rather than tonight.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ COMPARISON TABLE ══ -->
+  <div class="section-head">Quick Comparison</div>
+  <div style="overflow-x: auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Venue</th>
+          <th>Area / Drive</th>
+          <th>Water Feature</th>
+          <th>Noise</th>
+          <th>Drinks ★</th>
+          <th>Food ★</th>
+          <th>Veg</th>
+          <th>Per Head ₹</th>
+          <th>Monsoon</th>
+          <th>Tonight?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Long Boat</strong></td>
+          <td>Marathahalli · 35–50 min</td>
+          <td>💧 30-ft indoor waterfall</td>
+          <td>🔊 Very Loud</td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="stars">★★★</span></td>
+          <td>Moderate</td>
+          <td>₹1,500–2,000</td>
+          <td>✅ Fully covered</td>
+          <td class="t-hard">Must reserve</td>
+        </tr>
+        <tr>
+          <td><strong>Oia</strong></td>
+          <td>Hennur · 35–50 min</td>
+          <td>🐠 2,000 sqft koi pond + waterfall</td>
+          <td>🔊 Very Loud</td>
+          <td><span class="stars">★★★½</span></td>
+          <td><span class="stars">★★½</span></td>
+          <td>Moderate</td>
+          <td>₹1,500–2,000</td>
+          <td>⚠️ Partial</td>
+          <td class="t-maybe">Long shot</td>
+        </tr>
+        <tr>
+          <td><strong>Stonny Brook</strong></td>
+          <td>RR Nagar · 40–55 min</td>
+          <td>🌊 Stream under tables + waterfall</td>
+          <td>⚠️ Loud</td>
+          <td><span class="stars">★★½</span></td>
+          <td><span class="stars">★★½</span></td>
+          <td>Strong</td>
+          <td>₹800–1,200</td>
+          <td>✅ Fully covered</td>
+          <td class="t-good">Most bookable</td>
+        </tr>
+        <tr>
+          <td><strong>Byg Brewski Hennur</strong></td>
+          <td>Hennur · 35–50 min</td>
+          <td>🌊 River + 🐠 koi pond</td>
+          <td>🔊 Very Loud</td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="stars">★★★</span></td>
+          <td>Moderate</td>
+          <td>₹1,500–2,000</td>
+          <td>⛈️ Open-air risk</td>
+          <td class="t-hard">Monsoon risk</td>
+        </tr>
+        <tr>
+          <td><strong>BLR Brewing Co</strong></td>
+          <td>Whitefield · 50–75 min</td>
+          <td>💧 45-ft indoor waterfall + koi pond</td>
+          <td>🔊 Very Loud</td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="stars">★★★</span></td>
+          <td>Weak ⚠️</td>
+          <td>₹800–1,500</td>
+          <td>⚠️ Partial</td>
+          <td class="t-maybe">Possible walk-in</td>
+        </tr>
+        <tr>
+          <td><strong>Bier Library</strong></td>
+          <td>Koramangala · 5–10 min</td>
+          <td>🐠 Koi pond centrepiece</td>
+          <td>⚠️ Loud</td>
+          <td><span class="stars">★★★★½</span></td>
+          <td><span class="stars">★★★½</span></td>
+          <td>Mod–Strong</td>
+          <td>₹900–1,400</td>
+          <td>⚠️ Partial</td>
+          <td class="t-good">Best walk-in</td>
+        </tr>
+        <tr>
+          <td><strong>Rim Naam</strong></td>
+          <td>MG Road · 20–30 min</td>
+          <td>🌳 Pavilion over garden pond</td>
+          <td>🗣️ Talkable</td>
+          <td><span class="stars">★★★</span></td>
+          <td><span class="stars">★★★★½</span></td>
+          <td>Moderate</td>
+          <td>₹2,500–4,000</td>
+          <td>✅ Fully covered</td>
+          <td class="t-hard">Very unlikely</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ VERDICT ══ -->
+  <div class="verdict-block">
+    <h3>Final Verdict</h3>
+
+    <div class="verdict-row">
+      <div class="vr-label">Best Overall</div>
+      <div class="vr-text"><strong>Long Boat Brewing Co.</strong> — The only venue with a confirmed indoor waterfall that is also a genuinely good brewery. Fully covered (monsoon-safe), craft beer that reviewers consistently love, and a Viking hall that genuinely earns its wow-factor. The noise is real; go for the experience, not the conversation.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">Most Unique</div>
+      <div class="vr-text"><strong>Stonny Brook</strong> — India's first stream restaurant, fully indoors, and the only venue where you're literally sitting with water running beneath your chair. Food is average, drinks are mid — but no other venue in Bangalore offers this. Also the most affordable and most bookable tonight.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">Best Scale &amp; Spectacle</div>
+      <div class="vr-text"><strong>Oia</strong> — A 2,000 sq.ft. koi pond with wooden bridges and a misting waterfall, inside Asia's largest pub. Saturday nights are very loud and the food is inconsistent, but nothing else in Bangalore matches the visual scale of this venue.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">Best Drinks Quality</div>
+      <div class="vr-text"><strong>The Bier Library</strong> — 4.4/5 from 21,000+ reviews and 7 craft taps that are independently praised across the board. Also the closest (Koramangala) and best bet for a walk-in tonight.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">If Budget Is No Limit</div>
+      <div class="vr-text"><strong>Rim Naam at The Oberoi</strong> — The most refined water-dining experience in Bangalore, the only talkable venue, and completely monsoon-safe. A fine-dining Thai restaurant, not a bar — plan it as a future outing, not tonight.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">Skip Tonight</div>
+      <div class="vr-text"><strong>Byg Brewski Hennur</strong> — It's spectacular when the weather is clear, but June monsoon + "most seating unavailable during monsoon" (reviewer quote) makes it a gamble on a rainy Saturday evening. Save it for a dry October weekend.</div>
+    </div>
+
+    <div class="verdict-row">
+      <div class="vr-label">Monsoon-Safe Trio</div>
+      <div class="vr-text"><strong>Long Boat · Stonny Brook · Rim Naam</strong> — All three are fully covered indoor venues. If it rains tonight (and in June Bangalore, it will), these are the only three where the water feature stays intact and your table stays dry.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

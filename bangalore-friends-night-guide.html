@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friends Night Out — Bangalore Restobars · 13 June 2026</title>
+<style>
+  :root {
+    --ivory: #faf6ee;
+    --cream: #fffdf7;
+    --green: #1e3d2f;
+    --green-lt: #2e5c46;
+    --gold: #b8923e;
+    --gold-lt: #d4aa5f;
+    --charcoal: #2b2b26;
+    --muted: #6b675c;
+    --talk-green: #1a4d2e;
+    --talk-amber: #6b4200;
+    --bg-talk-green: #eaf4ee;
+    --bg-talk-amber: #fdf3e0;
+    --red-muted: #7a2020;
+    --bg-red: #fdf0f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; }
+
+  /* ── Global Header ── */
+  .guide-head {
+    background: var(--green);
+    color: var(--ivory);
+    padding: 34px 36px 28px;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .guide-head .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 8px;
+  }
+  .guide-head h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+  }
+  .guide-head .sub {
+    font-size: 0.9rem;
+    color: #cfe0d5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .party-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,170,95,0.45);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.79rem;
+    color: var(--ivory);
+  }
+
+  /* ── Area strip ── */
+  .area-strip {
+    background: var(--gold);
+    padding: 10px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    align-items: center;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 28px;
+  }
+  .area-strip .label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .area-tag {
+    background: rgba(255,255,255,0.20);
+    border-radius: 14px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    color: #fff;
+  }
+  .area-tag strong { font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
+
+  /* ── Note boxes ── */
+  .note-box {
+    background: var(--bg-red);
+    border: 1px solid #e0b8b8;
+    border-left: 4px solid var(--red-muted);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    font-size: 0.84rem;
+    color: var(--charcoal);
+  }
+  .note-box strong { color: var(--red-muted); }
+  .note-box p + p { margin-top: 6px; }
+
+  /* ── Section heading ── */
+  .section-head {
+    font-size: 0.73rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid #ddd5be;
+    padding-bottom: 7px;
+    margin: 32px 0 20px;
+  }
+
+  /* ── Venue card ── */
+  .venue-card {
+    background: var(--cream);
+    border: 1px solid #e5ddc9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 14px rgba(30,61,47,0.07);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid #eae0cc;
+  }
+  .rank-badge {
+    flex: 0 0 48px;
+    height: 48px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .card-title { flex: 1; }
+  .card-title h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--green);
+    letter-spacing: 0.2px;
+  }
+  .card-title .location-line {
+    font-size: 0.79rem;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 14px;
+    padding: 3px 11px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .badge-talk-ok {
+    background: var(--bg-talk-green);
+    color: var(--talk-green);
+    border: 1px solid #a8d8bc;
+  }
+  .badge-talk-warn {
+    background: var(--bg-talk-amber);
+    color: var(--talk-amber);
+    border: 1px solid #e0c07a;
+  }
+  .badge-cluster {
+    background: var(--ivory);
+    color: var(--green-lt);
+    border: 1px solid #c8d8c8;
+  }
+  .badge-cover-ok {
+    background: #e8f2ff;
+    color: #1a3d6e;
+    border: 1px solid #aac4e8;
+  }
+  .badge-cover-warn {
+    background: #fff8e0;
+    color: #6b4200;
+    border: 1px solid #e0c87a;
+  }
+  .badge-budget-ok {
+    background: #eaf4ee;
+    color: #1a4d2e;
+    border: 1px solid #a8d8bc;
+  }
+  .badge-budget-warn {
+    background: #fff8e0;
+    color: #6b4200;
+    border: 1px solid #e0c87a;
+  }
+  .badge-asia50 {
+    background: #f0eaff;
+    color: #3d1a6e;
+    border: 1px solid #c4a8e0;
+  }
+  .badge-snacks {
+    background: #fff0e8;
+    color: #6e3a1a;
+    border: 1px solid #e0bfa8;
+  }
+
+  .card-body { padding: 18px 22px 20px; }
+  .reviewer-note {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .reviewer-note em { font-style: normal; color: var(--green-lt); font-weight: 700; }
+
+  /* ── Cocktail box ── */
+  .cocktail-box {
+    background: var(--ivory);
+    border: 1px solid #e0d4b8;
+    border-left: 3px solid var(--gold);
+    border-radius: 7px;
+    padding: 13px 16px;
+    margin-bottom: 14px;
+  }
+  .cocktail-box .cb-head {
+    font-size: 0.69rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .cocktail-list { list-style: none; }
+  .cocktail-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px dashed #e8dfc8;
+    font-size: 0.85rem;
+  }
+  .cocktail-list li:last-child { border-bottom: none; }
+  .c-name { font-weight: 700; color: var(--green-lt); flex: 0 0 auto; }
+  .c-price { color: var(--gold); font-weight: 700; white-space: nowrap; flex: 0 0 auto; }
+  .c-desc { color: var(--muted); font-size: 0.8rem; flex: 1; }
+
+  /* ── Food grid ── */
+  .food-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .food-col {
+    background: var(--ivory);
+    border: 1px solid #e8e0cc;
+    border-radius: 7px;
+    padding: 12px 14px;
+  }
+  .food-col .fc-head {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .food-col ul { list-style: none; }
+  .food-col ul li {
+    font-size: 0.83rem;
+    color: var(--charcoal);
+    padding: 3px 0;
+    border-bottom: 1px dashed #e8dfc8;
+  }
+  .food-col ul li:last-child { border-bottom: none; }
+  .food-col ul li strong { color: var(--green-lt); }
+
+  /* ── Venue meta row ── */
+  .venue-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .venue-meta .vm-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .vm-item strong { color: var(--charcoal); }
+
+  /* ── Compare table ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    background: var(--cream);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5ddc9;
+    margin-bottom: 28px;
+  }
+  .compare-table th {
+    background: var(--green);
+    color: var(--gold-lt);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .compare-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ede5d4;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--ivory); }
+  .compare-table .col-rank { font-size: 1.1rem; text-align: center; }
+  .compare-table .col-name { font-weight: 700; color: var(--green); }
+  .compare-table .col-area { color: var(--muted); font-size: 0.77rem; }
+  .compare-table .stars { color: var(--gold); }
+  .talk-ok-text { color: var(--talk-green); font-weight: 700; }
+  .talk-warn-text { color: var(--talk-amber); font-weight: 700; }
+  .budget-ok-text { color: #1a4d2e; font-weight: 700; }
+  .budget-warn-text { color: #7a5400; font-weight: 700; }
+
+  /* ── Verdict block ── */
+  .verdict-block {
+    background: var(--green);
+    color: var(--ivory);
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin-bottom: 24px;
+  }
+  .verdict-block .vb-eyebrow {
+    font-size: 0.69rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 10px;
+  }
+  .verdict-block h3 {
+    font-size: 1.25rem;
+    font-weight: normal;
+    margin-bottom: 12px;
+  }
+  .verdict-block p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #d8ede0;
+    margin-bottom: 10px;
+  }
+  .verdict-block p:last-child { margin-bottom: 0; }
+  .verdict-block strong { color: var(--gold-lt); }
+
+  /* ── Crawl box ── */
+  .crawl-box {
+    background: var(--cream);
+    border: 1px solid #e0d4b8;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+  }
+  .crawl-box .cb-eyebrow {
+    font-size: 0.69rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .crawl-box p {
+    font-size: 0.87rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .crawl-box p:last-child { margin-bottom: 0; }
+  .crawl-box strong { color: var(--green); }
+
+  /* ── Footer ── */
+  .guide-foot {
+    border-top: 1px solid #ddd5be;
+    padding-top: 16px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 560px) {
+    body { font-size: 14px; }
+    .wrap { padding: 0 0 32px; }
+    .guide-head { border-radius: 0; padding: 24px 18px 20px; }
+    .area-strip { border-radius: 0; }
+    .guide-head h1 { font-size: 1.5rem; }
+    .food-grid { grid-template-columns: 1fr; }
+    .card-head { flex-direction: column; gap: 10px; }
+    .rank-badge { align-self: flex-start; }
+    .compare-table { font-size: 0.75rem; }
+    .compare-table th, .compare-table td { padding: 8px 8px; }
+    .verdict-block { border-radius: 0; }
+    .venue-card { border-radius: 0; margin-bottom: 16px; }
+    .section-head { margin-left: 16px; margin-right: 16px; }
+    .note-box { margin: 0 0 16px; border-radius: 0; }
+    .card-body, .card-head { padding-left: 16px; padding-right: 16px; }
+    .verdict-block, .crawl-box { border-radius: 0; margin-left: 0; margin-right: 0; }
+    .crawl-box { margin: 0 0 16px; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    body { background: #fff; font-size: 11px; }
+    .wrap { padding: 0; }
+    .guide-head { border-radius: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .area-strip { -webkit-print-color-adjust: exact; print-color-adjust: exact; border-radius: 0; }
+    .venue-card { break-inside: avoid; box-shadow: none; border-radius: 0; margin-bottom: 14px; }
+    .rank-badge, .verdict-block, .compare-table th, .badge {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .food-grid { grid-template-columns: 1fr 1fr; }
+    .compare-table { break-inside: avoid; }
+    .verdict-block { border-radius: 0; break-inside: avoid; }
+    .crawl-box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ════ HEADER ════ -->
+  <div class="guide-head">
+    <div class="eyebrow">A Food Reviewer's Field Notes</div>
+    <h1>Bangalore Friends Night — Where to Go Tonight</h1>
+    <div class="sub">Ranked shortlist · Talkability first · Cocktails a close second</div>
+    <div class="party-chips">
+      <span class="chip">👥 5 people (1 vegetarian)</span>
+      <span class="chip">📅 Saturday, 13 June 2026</span>
+      <span class="chip">💰 ₹2,000 / person all-in</span>
+      <span class="chip">🎯 Chill &amp; talkable vibe</span>
+      <span class="chip">🌧️ June monsoon — cover matters</span>
+    </div>
+  </div>
+
+  <!-- ════ AREA STRIP ════ -->
+  <div class="area-strip">
+    <span class="label">Areas →</span>
+    <span class="area-tag"><strong>East</strong> Indiranagar</span>
+    <span class="area-tag"><strong>CBD</strong> MG Road</span>
+    <span class="area-tag"><strong>CBD</strong> Brigade Road</span>
+    <span class="area-tag"><strong>CBD</strong> Church Street</span>
+    <span class="area-tag"><strong>South</strong> JP Nagar</span>
+    <span class="area-tag"><strong>South</strong> Jayanagar</span>
+  </div>
+
+  <!-- ════ NOTE: SURPRISES ════ -->
+  <div class="note-box">
+    <strong>⚠️ Before you decide — two venues from the usual shortlist have changed status:</strong>
+    <p><strong>The Permit Room (MG Road)</strong> — confirmed permanently closed as of June 2026. Aggregator ghost pages still appear; do not trust them.</p>
+    <p><strong>FLO (Church Street)</strong> — now operating as a nightclub. "Superclub Saturday" with back-to-back DJ sets. Disqualified from this list entirely.</p>
+  </div>
+
+  <!-- ════ RANKED VENUES ════ -->
+  <div class="section-head">🏆 Ranked Shortlist — 7 Venues</div>
+
+  <!-- ── CARD 1: MIRTH ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥇</div>
+      <div class="card-title">
+        <h2>Mirth</h2>
+        <div class="location-line">📍 303, 100 Feet Road, Indiranagar 1st Stage · 2nd Floor, Ashok Terrace</div>
+        <div class="badges">
+          <span class="badge badge-cluster">East · Indiranagar</span>
+          <span class="badge badge-talk-ok">🗣️ Easy to talk</span>
+          <span class="badge badge-cover-ok">☂️ Fully indoor</span>
+          <span class="badge badge-budget-ok">₹1,200–1,500 / person ✓</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        The best-kept quiet on 100 Feet Road. Mirth is 65 seats, golden-lit, and — crucially — has <em>no DJ and no live act</em>. In a strip where every other bar is trying to be a nightclub, this neighbourhood cocktail den is the rare place where you can sit across the table from four friends and actually hear what they're saying. The cocktail programme was designed by Dev Narveker (of Petisco, Goa fame) and the glass in your hand will consistently surprise you — think pickled-jalapeño martinis and smoked-chilli highballs, not the usual tropical-fruit parade. Order a round early and settle in for the evening.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Signature Cocktails</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Pour Me A Slice</span><span class="c-price">~₹550 est.</span><span class="c-desc">Whiskey, cheese wash, cherry, hibiscus sake — the house's most-talked-about glass</span></li>
+          <li><span class="c-name">Martini Revolver</span><span class="c-price">~₹550 est.</span><span class="c-desc">Tequila-mezcal, jalapeño brine — deceptively smooth with a slow kick</span></li>
+          <li><span class="c-name">Slow Current</span><span class="c-price">~₹500 est.</span><span class="c-desc">Chilli highball, Gundu pepper, sumac — the most sessionable glass on the menu</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>East Meets Mezze</strong> — hummus, edamame, sriracha</li>
+            <li><strong>Napoli Heatwave</strong> — spaghetti in chilli oil</li>
+            <li><strong>Sunny Side South (Asian variant)</strong> — ask the server</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Crackle Theory</strong> — crispy pork, chef's pick</li>
+            <li><strong>Chilli Basil Chicken</strong> — wok-tossed, punchy</li>
+            <li><strong>Sunny Side South</strong> — Goan-spiced omelette</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>6:30 PM–12:30 AM</strong></span>
+        <span class="vm-item">📖 <strong>Book now:</strong> EazyDiner / Zomato / District — only 65 covers, Saturdays fill fast</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Fully indoor, no exposure</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 2: YUKI ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥈</div>
+      <div class="card-title">
+        <h2>Yuki — Cocktail Bar &amp; Kitchen</h2>
+        <div class="location-line">📍 839/1, 100 Feet Road (above Leon's), Binnamangala 1st Stage, Indiranagar · 2nd Floor</div>
+        <div class="badges">
+          <span class="badge badge-cluster">East · Indiranagar</span>
+          <span class="badge badge-talk-ok">🗣️ Easy to talk*</span>
+          <span class="badge badge-cover-ok">☂️ Fully indoor</span>
+          <span class="badge badge-budget-ok">₹1,000–1,400 / person ✓</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        Yuki is everything that the noisy Indiranagar Saturday isn't: a Pan-Asian cocktail bar with a 4.8/5 rating across nearly 5,000 reviews, a menu that reads like a serious chef's grocery list, and — most usefully for tonight — a <em>genuinely deep vegetarian menu</em> that goes way beyond token paneer. The dumplings alone deserve the trip. There's a live band on some weekends, but Zomato reviewers tag it "less noisy" despite this, and the cosy 2nd-floor layout absorbs sound well. One asterisk: <em>call ahead (+91 90357 90167) to confirm band setup on Saturday</em> and whether the music level is background or foreground. On the right night, this is the best full-package option on the list.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Signature Cocktails — 4.8 / 5 · Best-rated bar on this list</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Fig &amp; Cheese Old Fashioned</span><span class="c-price">~₹600 est.</span><span class="c-desc">Whisky base, sweet-savoury, deep and long — the showstopper</span></li>
+          <li><span class="c-name">Purple Moon</span><span class="c-price">~₹550 est.</span><span class="c-desc">Blue pea gin, salted elderflower, tonic — the table's most Instagrammed glass</span></li>
+          <li><span class="c-name">Pandan Teq-Tea</span><span class="c-price">~₹550 est.</span><span class="c-desc">Tequila, pandan — Southeast Asia in a glass, lighter and sessionable</span></li>
+          <li><span class="c-name">Cheesecake Gin &amp; Tonic</span><span class="c-price">~₹500 est.</span><span class="c-desc">Botanist base — the best G&amp;T variation of the batch</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>Truffle Edamame Dumplings</strong> — standout</li>
+            <li><strong>Cream Cheese Dumplings</strong></li>
+            <li><strong>Fried Sushi (Yasai Futomaki Age)</strong></li>
+            <li><strong>Burmese Chickpea Tofu</strong></li>
+            <li><strong>Kampung Rice (veg variant)</strong></li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Vietnamese Pho Soup</strong> — warming, perfect for June</li>
+            <li><strong>Gai Phad Phrik</strong> — chicken, basil, bird's eye chilli</li>
+            <li><strong>Japanese Curry Ramen Pork</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>12 PM–11:59 PM</strong></span>
+        <span class="vm-item">📖 <strong>Book:</strong> Swiggy Dineout · Call +91 90357 90167 re: band noise</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Fully indoor, no exposure</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 3: 13th FLOOR ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">🥉</div>
+      <div class="card-title">
+        <h2>The 13th Floor Lounge Bar</h2>
+        <div class="location-line">📍 Barton Centre, 84 MG Road · 13th Floor, Hotel Ivory Tower</div>
+        <div class="badges">
+          <span class="badge badge-cluster">CBD · MG Road</span>
+          <span class="badge badge-talk-ok">🗣️ Easy to talk</span>
+          <span class="badge badge-cover-ok">☂️ Glass-enclosed indoor</span>
+          <span class="badge badge-budget-warn">₹1,940 / person — tight but in</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        Thirteen floors up, the city spreads out below and the music — "played at conversation-level volumes: retro pop, rock ballads, lounge mixes" in the venue's own words — doesn't fight you for airtime. This is not a nightclub that happens to have a view; it's a bar that happens to have a spectacular one. The Pan-Asian and North Indian kitchen produces one of the strongest vegetarian menus on this list, and the cocktail bar handles the classics properly. Budget warning: at 5 people with two rounds each, you'll hit ₹1,940/head after taxes — right at the ceiling. Order with awareness. <em>Request the indoor glass-side seating</em> when booking; the outdoor terrace is beautiful but has no monsoon cover and tends to crowd up on weekend nights.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Bar Picks</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Arsenic and Old Lace</span><span class="c-price">~₹500 est.</span><span class="c-desc">House signature — gin-forward, precise, the confident order</span></li>
+          <li><span class="c-name">Long Island Iced Tea</span><span class="c-price">~₹480 est.</span><span class="c-desc">Consistently praised; made properly, not the corner-bar version</span></li>
+          <li><span class="c-name">Napalm</span><span class="c-price">~₹500 est.</span><span class="c-desc">Spicy, punchy, not for the faint-hearted — ask the bartender first</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>Ginza Chili Paneer</strong> — ₹350, Pan-Asian twist</li>
+            <li><strong>Khumb Tikka Rasmonak</strong> — ₹375, mushroom tikka</li>
+            <li><strong>Crunchy Masala Lotus Root</strong> — ₹395, reviewers love it</li>
+            <li><strong>Salt &amp; Pepper Crispy Corn</strong> — ₹345, crowd-pleaser</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Tandoori Chicken</strong> — a signature, properly smoky</li>
+            <li><strong>Thai Colored Curry</strong> — choose your protein</li>
+            <li><strong>Tom Kha Soup</strong> — works with chicken or tofu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>12 PM–12:30 AM</strong></span>
+        <span class="vm-item">📖 <strong>Book:</strong> Call +91 80 4178 3355 — reserve indoor glass-side seating specifically</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Indoor glass-enclosed ✓ — avoid outdoor terrace in June</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 4: GRAZERS ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">4️⃣</div>
+      <div class="card-title">
+        <h2>Grazers Resto-Bar</h2>
+        <div class="location-line">📍 8th F Main Road, opp. ICICI Bank, Jayanagar 1st Block (near 3rd Block)</div>
+        <div class="badges">
+          <span class="badge badge-cluster">South · Jayanagar</span>
+          <span class="badge badge-talk-ok">🗣️ Easy to talk</span>
+          <span class="badge badge-cover-ok">☂️ Indoor building</span>
+          <span class="badge badge-budget-ok">₹1,500–1,700 / person ✓</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        The sleeper pick. Grazers is the neighbourhood restobar that doesn't try too hard — warm lighting, two floors, music that a reviewer described as "played a bit loudly, but still at a level where you can comfortably talk." That one sentence is doing a lot of work: it puts Grazers ahead of half the options in the CBD cluster on the talkability metric. The cocktail list won't blow you away, but it covers the classics competently, and the kitchen does genuine multi-cuisine cooking rather than the standard bar snacks. Well under the budget ceiling with headroom to spare. <em>This is the pick if you want the evening to be about the conversation, not the venue.</em> One note: it's small — call ahead to confirm you can seat five comfortably.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Bar Picks</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Whiskey Sour</span><span class="c-price">~₹350 est.</span><span class="c-desc">Solid execution of the classic — the reliable order here</span></li>
+          <li><span class="c-name">Sangria (house)</span><span class="c-price">~₹350 est.</span><span class="c-desc">Fruit-forward, easy-drinking, works for the whole table</span></li>
+          <li><span class="c-name">Specialty Cocktails</span><span class="c-price">~₹320–400 est.</span><span class="c-desc">Ask the bartender what's fresh tonight — ask specifically, don't just order from the menu</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>Paneer Tikka</strong> — reliable, the vegetarian's anchor</li>
+            <li><strong>Veg Supremo Pizza</strong> — genuinely reviewed as good</li>
+            <li><strong>Spring Rolls</strong> — crisp, crowd-pleaser</li>
+            <li><strong>Mushroom Pizza</strong> — worth asking about</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Garlic Prawns</strong> — menu highlight</li>
+            <li><strong>Grilled Chicken</strong> — North Indian style</li>
+            <li><strong>Seafood options</strong> — ask what's fresh</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>11 AM–1 AM</strong></span>
+        <span class="vm-item">📖 <strong>Book:</strong> District.in — small venue, call to confirm table for 5</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Multi-floor indoor building, fully covered</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 5: DAYSIE ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">5️⃣</div>
+      <div class="card-title">
+        <h2>Daysie — All Day Casual Bar</h2>
+        <div class="location-line">📍 18, Ramanashree Arcade, MG Road · Near Trinity Metro Station</div>
+        <div class="badges">
+          <span class="badge badge-cluster">CBD · MG Road</span>
+          <span class="badge badge-talk-warn">⚠️ Gets loud late — request private section</span>
+          <span class="badge badge-cover-ok">☂️ Indoor sections available</span>
+          <span class="badge badge-budget-ok">₹1,600 / person ✓</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        The best cocktail programme of the CBD cluster — and the most budget-friendly option at MG Road quality levels. Daysie sprawls across 10,000 square feet with indoor sections, glass-enclosed rooms, and al fresco areas. The cocktail list is genuinely inventive and the multi-cuisine kitchen handles veg well. The caveat, and it's a real one: there's a live musician and in-house DJ in the evenings, and on a Saturday the main floor will have ambient noise from both. The fix is <em>specific when booking</em> — request a glass-enclosed private room or corner section. If you get it, this is an 8/10 evening. On the main floor, 6/10. Order first, ask questions later.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Signature Cocktails — Best CBD programme</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Dance Of The Peacock</span><span class="c-price">~₹450 est.</span><span class="c-desc">House signature — unexpected twists, floral and layered</span></li>
+          <li><span class="c-name">Asian Daydream</span><span class="c-price">~₹450 est.</span><span class="c-desc">Southeast Asian-inflected — the most sessionable of the batch</span></li>
+          <li><span class="c-name">Community Cocktails</span><span class="c-price">~₹400 est.</span><span class="c-desc">Rotating batch cocktails — ask what's on tonight</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>Blue Cheese &amp; Poached Pear Flatbread</strong> — standout</li>
+            <li><strong>Tulsi Paneer Rara</strong> — solid main</li>
+            <li><strong>Mumbai Masala Toastie</strong> — ₹275, great snack</li>
+            <li><strong>Papdi Chaat</strong> — ₹145, starter</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Haleem Butter Toast</strong> — the most talked-about plate</li>
+            <li><strong>Shrimp Pani Puri</strong> — playful, punchy</li>
+            <li><strong>Salmon Papdi Chaat</strong> — elevated street food</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>12 PM–12 AM</strong></span>
+        <span class="vm-item">📖 <strong>Book:</strong> Advisable — request private glass-enclosed section explicitly</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Indoor sections fully covered — skip al fresco in June</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 6: SOKA ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">6️⃣</div>
+      <div class="card-title">
+        <h2>Soka Cocktail Bar</h2>
+        <div class="location-line">📍 210, A Cross, 1st Main Road, Indiranagar 2nd Stage (Domlur border)</div>
+        <div class="badges">
+          <span class="badge badge-cluster">East · Indiranagar</span>
+          <span class="badge badge-talk-ok">🗣️ Intimate</span>
+          <span class="badge badge-cover-ok">☂️ Fully indoor</span>
+          <span class="badge badge-budget-ok">₹1,200–1,400 / person ✓</span>
+          <span class="badge badge-asia50">✦ Asia's 50 Best Bars 2025</span>
+          <span class="badge badge-snacks">⚠️ Snacks menu only — not a dinner venue</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        The most decorated bar in Bangalore — Asia's 50 Best Bars 2025 is not a listicle award, it is the hospitality industry's equivalent of a Michelin star. Soka has 38 seats, an izakaya-style layout, moody lighting, and a 15-cocktail list built entirely around technique and native Indian ingredients: red cabbage, jasmine, Gundu pepper, local produce you won't find in a standard bar menu. The cocktail experience here is genuinely unmatched on this list. The tradeoff: <em>this is a drinks-forward bar with a small snacks menu, not a full-dinner venue.</em> If you come here hungry, you will leave having had the best cocktails of your year and a slightly incomplete stomach. The practical move: eat somewhere first, then come to Soka for two rounds. Also — <em>book immediately</em>, 38 covers on a Saturday will be gone. Call +91 93530 45053.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Signature Cocktails — Asia's 50 Best · 15-strong menu, all technique-forward</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Made In Heaven</span><span class="c-price">~₹600 est.</span><span class="c-desc">House signature — the one everyone points to; ask staff to describe it tonight</span></li>
+          <li><span class="c-name">Mofo Don</span><span class="c-price">~₹600 est.</span><span class="c-desc">Tequila + red cabbage — spicy pink drink, visually arresting, surprisingly balanced</span></li>
+          <li><span class="c-name">I Blame Jasmine</span><span class="c-price">~₹600 est.</span><span class="c-desc">Jasmine-forward, floral but not sweet — the most elegant glass in the house</span></li>
+          <li><span class="c-name">Pi Pi Martini</span><span class="c-price">~₹600 est.</span><span class="c-desc">Precise, cold, the cocktail for someone who respects the martini form</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Snacks</div>
+          <ul>
+            <li><strong>Kothimbir Vadi</strong> — Maharashtrian fritter, well-executed</li>
+            <li><strong>Edamame Tart</strong> — clean, light</li>
+            <li><strong>Cup Noodles (veg)</strong> — the late-night closer</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Snacks</div>
+          <ul>
+            <li><strong>Chicken Gyoza</strong> — coconut cream dressed</li>
+            <li><strong>Pan-Seared Scallops</strong> — smoked tomato, refined</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>5 PM–1 AM</strong></span>
+        <span class="vm-item">📖 <strong>MUST book:</strong> Call +91 93530 45053 · Only 38 covers · Strictly reservation-only</span>
+        <span class="vm-item">☔ <strong>Monsoon:</strong> Fully indoor</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD 7: THE SCENE ── -->
+  <div class="venue-card">
+    <div class="card-head">
+      <div class="rank-badge">7️⃣</div>
+      <div class="card-title">
+        <h2>The Scene — Craft Kitchen &amp; Bar</h2>
+        <div class="location-line">📍 773, Outer Ring Road, 15th Cross, JP Nagar 1st Phase</div>
+        <div class="badges">
+          <span class="badge badge-cluster">South · JP Nagar</span>
+          <span class="badge badge-talk-ok">🗣️ Generally talkable</span>
+          <span class="badge badge-cover-warn">⚠️ Tree canopy — monsoon risk</span>
+          <span class="badge badge-budget-warn">₹2,000–2,200 / person — at/over ceiling</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="reviewer-note">
+        Full disclosure: this was already visited for a dinner on 12 June (the night before tonight's outing). The food is genuinely good — the alfresco tree-canopy setting is atmospheric in a way that few Bangalore venues match — and the architecture absorbs sound naturally, making it more talkable than most bars its size. But there are two honest flags for a group of five: <em>starters run ₹485–685 and feel expensive relative to portion</em>, and the cocktail selection, while large on paper, felt more limited in practice than the menu suggests (availability issues, or bartender recommendations not covering the full range). With five people doing two rounds each, the bill will sit right at ₹2,000/head — possibly over it. The monsoon risk is also real: the tree canopy is beautiful but not waterproof. Book the mezzanine, call ahead about rain cover, and ask the bartender directly which cocktails are fully available tonight. It's a good venue — it just ranks seventh because the venues above it are better value for this specific group.
+      </p>
+      <div class="cocktail-box">
+        <div class="cb-head">🍸 Confirmed Signatures — ₹675 each</div>
+        <ul class="cocktail-list">
+          <li><span class="c-name">Touchings</span><span class="c-price">₹675</span><span class="c-desc">Vodka, pickled guava, citrus, pink salt — the house signature, savoury-tangy</span></li>
+          <li><span class="c-name">Rom Com</span><span class="c-price">₹675</span><span class="c-desc">Whisky, pear, vanilla, bitters — served smoked at the table</span></li>
+          <li><span class="c-name">Highest Hoovu</span><span class="c-price">₹675</span><span class="c-desc">Gin, lavender, blue pea tea — floral, the table's most approachable glass</span></li>
+        </ul>
+      </div>
+      <div class="food-grid">
+        <div class="food-col">
+          <div class="fc-head">🥗 Vegetarian Must-Orders</div>
+          <ul>
+            <li><strong>Malabar Paneer</strong> — coconut-rich gravy, the veg anchor</li>
+            <li><strong>Gyoza (veg version)</strong> — ask for it specifically</li>
+            <li><strong>Veg Sushi rolls</strong> — ask what's available</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <div class="fc-head">🍗 Non-Veg Must-Orders</div>
+          <ul>
+            <li><strong>Indonesian Chicken Satay-Ayam</strong> — ₹485, the most-praised plate</li>
+            <li><strong>Ghost Chicken Wings</strong> — spicy, crowd-winner</li>
+            <li><strong>Karachi Lamb Chops</strong> — the chef's special</li>
+          </ul>
+        </div>
+      </div>
+      <div class="venue-meta">
+        <span class="vm-item">⏰ <strong>12 PM–1 AM (Sat)</strong></span>
+        <span class="vm-item">📖 <strong>Book:</strong> Zomato / EazyDiner / District — request mezzanine &amp; confirm monsoon cover</span>
+        <span class="vm-item">📞 <strong>+91 88671 77575</strong> — call re: rain cover before committing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ COMPARE TABLE ════ -->
+  <div class="section-head">📊 At a Glance — All Seven</div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Venue</th>
+        <th>Cluster</th>
+        <th>Talkability</th>
+        <th>Cocktails</th>
+        <th>Veg strength</th>
+        <th>Per person</th>
+        <th>Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-rank">🥇</td>
+        <td class="col-name">Mirth</td>
+        <td class="col-area">East · Indiranagar</td>
+        <td class="talk-ok-text">🗣️ Best</td>
+        <td><span class="stars">★★★★</span></td>
+        <td>Moderate</td>
+        <td class="budget-ok-text">~₹1,300</td>
+        <td>EazyDiner / Zomato</td>
+      </tr>
+      <tr>
+        <td class="col-rank">🥈</td>
+        <td class="col-name">Yuki</td>
+        <td class="col-area">East · Indiranagar</td>
+        <td class="talk-ok-text">🗣️ Good*</td>
+        <td><span class="stars">★★★★★</span></td>
+        <td><strong>Excellent</strong></td>
+        <td class="budget-ok-text">~₹1,200</td>
+        <td>Swiggy Dineout</td>
+      </tr>
+      <tr>
+        <td class="col-rank">🥉</td>
+        <td class="col-name">The 13th Floor</td>
+        <td class="col-area">CBD · MG Road</td>
+        <td class="talk-ok-text">🗣️ Good</td>
+        <td><span class="stars">★★★½</span></td>
+        <td><strong>Excellent</strong></td>
+        <td class="budget-warn-text">~₹1,940 ⚠️</td>
+        <td>Call to book</td>
+      </tr>
+      <tr>
+        <td class="col-rank">4️⃣</td>
+        <td class="col-name">Grazers</td>
+        <td class="col-area">South · Jayanagar</td>
+        <td class="talk-ok-text">🗣️ Best</td>
+        <td><span class="stars">★★½</span></td>
+        <td>Good</td>
+        <td class="budget-ok-text">~₹1,600</td>
+        <td>District.in</td>
+      </tr>
+      <tr>
+        <td class="col-rank">5️⃣</td>
+        <td class="col-name">Daysie</td>
+        <td class="col-area">CBD · MG Road</td>
+        <td class="talk-warn-text">⚠️ Request private section</td>
+        <td><span class="stars">★★★★</span></td>
+        <td>Good</td>
+        <td class="budget-ok-text">~₹1,600</td>
+        <td>Book + specify section</td>
+      </tr>
+      <tr>
+        <td class="col-rank">6️⃣</td>
+        <td class="col-name">Soka</td>
+        <td class="col-area">East · Indiranagar</td>
+        <td class="talk-ok-text">🗣️ Intimate</td>
+        <td><span class="stars">★★★★★</span></td>
+        <td>Snacks only</td>
+        <td class="budget-ok-text">~₹1,300*</td>
+        <td>Call now — 38 covers</td>
+      </tr>
+      <tr>
+        <td class="col-rank">7️⃣</td>
+        <td class="col-name">The Scene</td>
+        <td class="col-area">South · JP Nagar</td>
+        <td class="talk-ok-text">🗣️ Generally talkable</td>
+        <td><span class="stars">★★★</span></td>
+        <td>Moderate</td>
+        <td class="budget-warn-text">~₹2,100 ⚠️</td>
+        <td>Zomato / EazyDiner</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.75rem;color:var(--muted);margin-top:-18px;margin-bottom:28px;">* Yuki: call re live band noise. Soka: cocktails + snacks only, not a full dinner venue. All estimates include taxes + service charge.</p>
+
+  <!-- ════ VERDICT ════ -->
+  <div class="verdict-block">
+    <div class="vb-eyebrow">The Reviewer's Call</div>
+    <h3>If you only pick one: Mirth.</h3>
+    <p>For five friends on a Saturday who want to actually talk: Mirth wins on the dominant filter. No DJ, no live act, a cocktail programme serious enough to hold your attention for two rounds, and a comfortable indoor room with no monsoon anxiety. The veg menu is lighter than Yuki's, but the one vegetarian won't be stranded — East Meets Mezze and the pasta cover it. Book it tonight, order the Martini Revolver first, and enjoy the fact that you can hear each other.</p>
+    <p><strong>If strong veg is the priority:</strong> Switch to Yuki. The vegetarian gets five genuinely good options (the Truffle Edamame Dumplings are a meal in themselves), the cocktail list is the highest-rated of the batch, and the price is even lower than Mirth. The only variable is the live band — call ahead and confirm the volume. If they say it's background acoustic, Yuki is arguably the better full-package choice.</p>
+    <p><strong>For the cocktail-obsessed:</strong> Start dinner at Mirth or Yuki, then walk/cab to Soka for the last two rounds. Asia's 50 Best is not marketing. The cocktails there are in a different league — treat it as the evening's finale, not the venue where you also have dinner.</p>
+    <p><strong>If you're near the CBD:</strong> The 13th Floor is a reliable, upmarket option with the best view on this list. Watch the budget, request indoor glass-side seating, and call to confirm there's no live act on tonight.</p>
+  </div>
+
+  <!-- ════ 2-STOP CRAWL ════ -->
+  <div class="crawl-box">
+    <div class="cb-eyebrow">🗺️ Optional: The 2-Stop Crawl</div>
+    <p><strong>East crawl (Indiranagar — 5-min cab between stops):</strong> Dinner at <strong>Yuki</strong> (7–9 PM) → cocktails at <strong>Soka</strong> (9:30 PM onwards). Full dinner + the best cocktail bar in the city. The vegetarian is well-served at Yuki; everyone lands at Soka for the finale. This is the highest-ceiling evening on the list. <em>Book both before you go — Soka's 38 covers go fast.</em></p>
+    <p><strong>CBD crawl (MG Road — 3-min walk between stops):</strong> Pre-dinner drinks at <strong>Daysie</strong> (request private section, 6:30–8 PM) → dinner at <strong>The 13th Floor</strong> (8 PM reservation, indoor glass-side). Best view, manageable budget, walkable. One watch: total spend across both stops may nudge ₹2,000/head — confirm orders at The 13th Floor and skip a third cocktail round.</p>
+  </div>
+
+  <!-- ════ FOOTER ════ -->
+  <div class="guide-foot">
+    Research conducted 13 June 2026 · Sources: Zomato, Magicpin, Swiggy Dineout, EazyDiner, TripAdvisor, LBB, Outlook Traveller, Hospitality News, The World's 50 Best, Restaurant Guru, Wanderlog · The Permit Room (MG Road) confirmed closed · FLO (Church Street) confirmed nightclub · Ironhill disqualified: outside JP Nagar/Jayanagar boundary + loud live gigs on Saturdays<br>
+    The Scene assessment informed by real visit, 12 June 2026. Prices marked "~est." are estimates; confirm at venue.
+  </div>
+
+</div>
+</body>
+</html>
