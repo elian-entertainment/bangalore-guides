@@ -133,6 +133,20 @@
   .tag-price   { background: var(--green); color: var(--gold-lt); font-weight: bold; }
   .tag-egg     { background: #fff3e0; color: #b84a00; border: 1px solid #f0c060; }
   .tag-warn    { background: #fff8e1; color: #7a5800; border: 1px solid #f0c060; }
+  .caution-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    background: #fff8e1;
+    color: #7a5800;
+    border: 1px solid #f0c060;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    margin-top: 1px;
+  }
   .cocktail-note {
     background: #fff8e6;
     border: 1px solid #e0c870;
@@ -175,7 +189,7 @@
     .head h1 { font-size: 1.40rem; }
     .section-head { padding: 12px 18px 10px; }
     .section-body { padding: 12px 18px 6px; }
-    .rank-num { width: 30px; height: 30px; font-size: 0.82rem; }
+    .rank-num, .caution-num { width: 30px; height: 30px; font-size: 0.82rem; }
     .method-note, .legend { margin: 14px 18px; }
   }
   @media print {
@@ -1039,6 +1053,116 @@
         </li>
 
       </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 7 — HEADS-UP
+  ══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="sh-eyebrow">Section 7 · Heads-Up</div>
+      <h2>What to Skip &amp; Watch For</h2>
+      <div class="sh-note">Honestly-sourced cautions — tagged <em>reviewer-reported</em> (≥2 independent diners) or <em>our read</em> (inference). Positive counter-signals included where found.</div>
+    </div>
+    <div class="section-body">
+      <ul class="rank-list">
+
+        <li class="rank-item">
+          <div class="caution-num">⚠</div>
+          <div class="rank-body">
+            <div class="rank-name">Volume — nightclub-level noise on weekends</div>
+            <div class="rank-why">Two independent TripAdvisor reviewers in 2024 called the music <b>deafening</b> — one described it as "impossible to sit through dinner with family" with physical vibration. The venue doubles as a club with a dance floor and karaoke rooms. For quiet conversation or a family dinner, a weeknight is the safer call.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">reviewer-reported · Michelle R, TripAdvisor Jan 2024</span>
+              <span class="tag tag-data">reviewer-reported · Lizy J, TripAdvisor Mar 2024</span>
+              <span class="tag tag-warn">comes with the club format</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Beer — use the sampler, don't order blind</div>
+            <div class="rank-why">The brewery's Untappd overall is <b>3.27 / 5</b> (609 ratings) — decent, not outstanding. The six-pour sampler flight (§1 #1) lets you taste before committing to a pint. The Helles Lager and The Bard (Hefeweizen) sit at the lower end of the tap list; Ale Othello (IPA) is the highest-rated. If you don't like hoppy beers, ask the bartender for a rec rather than guessing.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Untappd · brewery overall 3.27 / 5 · 609 ratings</span>
+              <span class="tag tag-expert">our read · weaker styles: Helles, Hefeweizen</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Cocktails — 100+ options, no independent benchmarks</div>
+            <div class="rank-why">ShakesBierre markets over 100 cocktails but no independent reviewer has called out a specific cocktail as a must-order. That's a blind-order risk, not necessarily a quality flag. Ask the bartender what's good that night rather than picking by menu name.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">our read · no verifiable top picks found across platforms</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Food — solid brewpub fare, not destination dining</div>
+            <div class="rank-why">Even reviewers giving 5 stars describe the food as "okay, not exceptional, but good enough for a casual outing." One Dec 2023 reviewer specifically said starters were "not that good" — a thin single data point, not a pattern, but worth noting. The §2–§6 ranked picks are the reliably praised items; order from those and you'll eat well. Don't come here primarily for the food.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">reviewer-reported · Jathin H, TripAdvisor Dec 2023 (starters)</span>
+              <span class="tag tag-expert">our read · Sandeep Gunjan, Restaurant-Guru Apr 2026</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Service — consistently praised; no recurring complaints found</div>
+            <div class="rank-why">Google Maps flags "polite staff" in 142 separate reviews. TripAdvisor and Restaurant-Guru reviewers independently praise staff by name. No recurring service failure appeared across the 7,637-review dataset. This is a genuine positive: if something with the food or drinks is off, the staff tend to be responsive.</div>
+            <div class="rank-meta">
+              <span class="tag tag-data">Google Maps · polite staff ×142 mentions</span>
+              <span class="tag tag-data">4.5 ★ / 7,637 reviews · Google Maps Jun 2026</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Billing — 10% service charge added before GST</div>
+            <div class="rank-why">Standard for Brigade Road venues, but the gap between the menu price and the final bill is wider than it looks. Factor in the service charge when budgeting, especially on a round of craft beers and starters.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">our read · standard Bengaluru brewpub billing structure</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">⚠</div>
+          <div class="rank-body">
+            <div class="rank-name">SkyDeck (rooftop) — call ahead during monsoon season</div>
+            <div class="rank-why">The open-air rooftop is a highlight, but Bengaluru's southwest monsoon runs <b>June–September</b>. No published rain policy has been found. If you're visiting specifically for the outdoor experience, call ahead (+91 96069 79931) to confirm the deck is open. A mid-evening shower means indoor reseating with little control over placement.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">our read · Bengaluru SW-monsoon climatology</span>
+              <span class="tag tag-warn">June – September risk</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="rank-item">
+          <div class="caution-num">ℹ</div>
+          <div class="rank-body">
+            <div class="rank-name">Weekend walk-ins — book a table in advance</div>
+            <div class="rank-why">Brigade Road is one of Bengaluru's busiest nightlife corridors. With 7,600+ reviews and a club floor, walk-in availability on Friday and Saturday evenings is not guaranteed — especially if you want the rooftop or a specific booth.</div>
+            <div class="rank-meta">
+              <span class="tag tag-expert">our read · Brigade Road weekend volume</span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
     </div>
   </div>
 
